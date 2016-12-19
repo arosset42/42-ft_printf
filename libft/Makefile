@@ -44,7 +44,7 @@ SUCCESS		=	$(C_GOOD)SUCCESS$(C_NO)
 OK 			=	$(C_OK)OK$(C_NO)
 F_TEST 		= 	$(C_TEST)DEBUT TEST$(C_NO)
 ERROR		= 	$(C_ERROR) ERROR $(C_NO)
-C_DEL		= 	$(C_ERROR) DELETE $(C_NO)
+DEL			= 	$(C_ERROR) DELETE $(C_NO)
 C_OBJ		= 	$(C_OK) OBJ $(NAME) $(C_NO)
 
 all : $(NAME)
@@ -54,17 +54,17 @@ $(NAME) : $(OBJ)
 	@ranlib $(NAME)
 	@echo Lib : [ $(NAME) ] $(SUCCESS)
 
-%.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+%.o: %.c $(INCLUDES)
+	@$(CC) $(CFLAGS) -c -o $@ $< -I $(INCLUDES)
 	@echo $(C_OBJ) [ $< ] $(OK)
 
 clean :
 	@rm -f $(OBJ)
-	@echo $(C_DEL) OBJ $(NAME)
+	@echo $(DEL) OBJ $(NAME)
 	
 fclean : clean
 	@rm -f $(NAME)
-	@echo $(C_DEL) $(NAME)
+	@echo $(DEL) $(NAME)
 
 re : fclean all
 

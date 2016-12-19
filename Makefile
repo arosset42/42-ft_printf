@@ -3,12 +3,13 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: arosset <arosset@student.42.fr>            +#+  +:+       +#+         #
+#    By: arosset <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/11/25 13:46:14 by arosset           #+#    #+#              #
-#    Updated: 2016/12/12 15:59:52 by arosset          ###   ########.fr        #
+#    Created: 2016/12/19 10:57:49 by arosset           #+#    #+#              #
+#    Updated: 2016/12/19 10:57:54 by arosset          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 NAME 		= 	libftprintf.a
 
 CC 			=	gcc
@@ -42,10 +43,9 @@ $(NAME) : $(OBJ)
 	@ranlib $(NAME)
 	@echo Lib : [ $(NAME) ] $(SUCCESS)
 
-%.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+%.o: %.c $(INCLUDES)
+	@$(CC) $(CFLAGS) -c -o $@ $< -I $(INCLUDES)
 	@echo $(C_OBJ) [ $< ] $(OK)
-
 clean :
 	@rm -f $(OBJ)
 	@echo $(C_DEL) OBJ $(NAME)
