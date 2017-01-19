@@ -10,10 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <stdio.h>
 
 int		main(void)
 {
-	ft_printf("coucou");
+	char	*str;
+	int		test;
+
+	test = 1;
+	str = "coucou";
+	printf("test %65% = %.5d /", test);
 	return (0);
 }

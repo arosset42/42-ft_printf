@@ -12,19 +12,35 @@
 
 #include "ft_printf.h"
 
-char	**ft_recup_param(const char *format)
+t_param		*ft_list_new_param(char const *content, char const *type)
 {
-	
+	t_param		*new;
+	size_t		size_content;
+	size_t		size_type;
 
+	size_content = ft_strlen(content);
+	size_type = ft_strlen(type);
+	new = (t_param *)malloc(sizeof(t_param));
+	if (new == NULL)
+		return (NULL);
+	new->content = malloc(size_content);
+	new->type = malloc(size_type);
+	if (content == NULL || type == NULL)
+		return (NULL);
+	ft_memcpy(new->content, content, size_content)
+	ft_memcpy(new->type, type, size_type)
+	new->next = NULL;
+	return (new);
 }
+
 
 int		ft_printf(const char *format, ...)
 {
 	va_list		va;
-	char		**tab;
+	t_param		*param;
 
-	tab = ft_recup_param(format);
-	
+	param = ft_recup_param(format);
+
 
 
 	va_end(va);
