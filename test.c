@@ -19,9 +19,10 @@ int     main(void)
     void            *strvoid;
     int             nbr;
     unsigned int    nbrs;
+    char            c;
 
-
-    nbr = 65;
+    c = 'g';
+    nbr = -65;
     nbrs = 42;
 
     str = "je suis une chaine";
@@ -33,9 +34,11 @@ int     main(void)
 
     printf("convertion p : %p \n", strvoid);
 
+    printf("convertion d : %5hhd \n", nbr);
+
     printf("convertion D : %D \n", nbr);
 
-    printf("convertion i : %i \n", nbr);
+    printf("convertion i : %i \n", nbrs);
 
     printf("convertion o : %o \n", nbrs);
 
@@ -49,9 +52,9 @@ int     main(void)
 
     printf("convertion X : %X \n", nbrs);
 
-    printf("convertion c : %c \n", nbr);
+    printf("convertion c : %c \n", c);
 
-    printf("convertion C : %C \n", nbr);
+    printf("convertion C : %C \n", c);
 
     printf("gerer pourcentage %% \n");
 

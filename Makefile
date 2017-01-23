@@ -17,7 +17,7 @@ CFLAGS 		= 	-Wall -Werror -Wextra
 
 INCLUDES 	= 	ft_printf.h
 
-SRC 		= 	ft_printf.c
+SRC 		= 	ft_printf.c ft_create_list_arg.c
 
 OBJ 		= 	$(SRC:.c=.o)
 
@@ -49,7 +49,7 @@ $(NAME) : $(OBJ)
 clean :
 	@rm -f $(OBJ)
 	@echo $(C_DEL) OBJ $(NAME)
-	
+
 fclean : clean
 	@rm -f $(NAME)
 	@echo $(C_DEL) $(NAME)

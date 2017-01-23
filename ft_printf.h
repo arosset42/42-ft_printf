@@ -18,14 +18,6 @@
 # include <stdarg.h>
 # include "libft/libft.h"
 
-typedef struct		s_param
-{
-    char            *type;
-    char            *content;
-	struct s_param	*next;
-	struct s_param	*prev;
-}					t_param;
-
 int		ft_printf(const char *format, ...);
 
 #endif

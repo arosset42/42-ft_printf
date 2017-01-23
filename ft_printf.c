@@ -12,43 +12,70 @@
 
 #include "ft_printf.h"
 
-t_param		*ft_list_new_param(char const *content, char const *type)
+int		ft_chr_param(char param)
 {
-	t_param		*new;
-	size_t		size_content;
-	size_t		size_type;
+	if (param == '%')
+		return (6);
+	else if (param == 's'|| param == 'S')
+		return (1);
+	else if (param == 'p')
+	 	return (2);
+	else if (param == 'D' || param == 'd' || param == 'i')
+		return (3);
+	else if (param == 'o' || param == 'O' || param == 'u' || param == 'U' \
+				param == 'x' || param == 'X')
+		return (4);
+	else if (param == 'c' || param == 'C')
+		return (5);
+	else if (ft_isdigit(param) == 1 || param == '.' || param == '#' || \
+	 			param == '+' || param == '-' || param == 'h'\
+				param == 'l' || param == 'j' || param == 'z' || param == ' ')
+		return (0);
+	else
+		return (-1);
 
-	size_content = ft_strlen(content);
-	size_type = ft_strlen(type);
-	new = (t_param *)malloc(sizeof(t_param));
-	if (new == NULL)
-		return (NULL);
-	new->content = malloc(size_content);
-	new->type = malloc(size_type);
-	if (content == NULL || type == NULL)
-		return (NULL);
-	ft_memcpy(new->content, content, size_content)
-	ft_memcpy(new->type, type, size_type)
-	new->next = NULL;
-	return (new);
 }
 
+int		ft_check_param(va_list arg, const char *format)
+{
+	char	*chr;
+	int 	i;
+	int		ref;
+	int 	ret;
+
+	chr = ft_strchr(format, '%');
+	i = 0;
+	ref = ft_chr_param(chr[i]);
+	while (ref == 0)
+	{
+		i++;
+		ref = ft_chr_param(chr[i])
+	}
+	if (ref == 1)
+		ret = ft_string_param();
+	else if (ref == 2)
+		ret = ft_pointeur_param();
+	else if (ref == 3)
+		ret = ft_int_param();
+	else if (ref == 4)
+		ret == ft_unsigned_int_param();
+	else if (ref == 5)
+		ret == ft_char_param();
+	else if (ref == 6)
+		ret == ft_cent_param();
+	else
+		return (-1);
+	return (ret);
+}
 
 int		ft_printf(const char *format, ...)
 {
-	va_list		va;
-	t_param		*param;
+	va_list		arg;
+	int			ret;
 
-	param = ft_recup_param(format);
-
-
-
-	va_end(va);
-	return (0);
-}
-
-int		main(void)
-{
-	ft_printf("coucou%d", 5, 6);
-	return (0);
+	va_start(arg, format);
+	//ft_putendl("va start");
+	ret = ft_check_param(arg);
+	va_end(arg);
+	return (ret);
 }
