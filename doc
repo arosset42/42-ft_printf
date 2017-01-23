@@ -25,3 +25,17 @@ C.
 
     void
     va_end(va_list ap);
+
+
+s = char*
+p = int
+D = int
+I = int
+o = unsigned int
+O = unsigned int
+u = unsigned int
+U = unsigned int
+x = unsigned int
+X = unsigned int
+c = int
+C = int
