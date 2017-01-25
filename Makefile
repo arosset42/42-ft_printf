@@ -17,8 +17,7 @@ CFLAGS 		= 	-Wall -Werror -Wextra
 
 INCLUDES 	= 	ft_printf.h
 
-SRC 		= 	ft_printf.c ft_create_list_arg.c
-
+SRC 		= 	ft_printf.c
 OBJ 		= 	$(SRC:.c=.o)
 
 # COLORS

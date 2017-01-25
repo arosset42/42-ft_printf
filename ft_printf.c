@@ -53,16 +53,16 @@ int		ft_check_param(va_list arg, const char *format)
 	}
 	if (ref == 1)
 		ret = ft_string_param();
-	else if (ref == 2)
-		ret = ft_pointeur_param();
-	else if (ref == 3)
-		ret = ft_int_param();
-	else if (ref == 4)
-		ret == ft_unsigned_int_param();
-	else if (ref == 5)
-		ret == ft_char_param();
-	else if (ref == 6)
-		ret == ft_cent_param();
+	// else if (ref == 2)
+	// 	ret = ft_pointeur_param();
+	// else if (ref == 3)
+	// 	ret = ft_int_param();
+	// else if (ref == 4)
+	// 	ret == ft_unsigned_int_param();
+	// else if (ref == 5)
+	// 	ret == ft_char_param();
+	// else if (ref == 6)
+	// 	ret == ft_cent_param();
 	else
 		return (-1);
 	return (ret);
