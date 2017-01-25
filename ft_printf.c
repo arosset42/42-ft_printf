@@ -43,7 +43,7 @@ int		ft_select_type(char param)
 		return (-1);
 }
 
-int		ft_select_flag(int type, va_list arg, const char *format)
+int		ft_select_flag(int type, va_list *args, const char *format)
 {
 	int		ret;
 	ret = 0;
@@ -51,34 +51,37 @@ int		ft_select_flag(int type, va_list arg, const char *format)
 	ft_putnbr(type);
 	ft_putendl("");
 	if (type == 1)
-		ret = ft_s_S_convert(arg, format);
+		ret = ft_s_S_convert(&args, format);
 	return (ret);
 }
 
-int		ft_check_param(va_list arg, const char *format)
+int		ft_check_param(va_list *args, const char *format, size_t i)
 {
-	char	*eflag;
-	int 	i;
-	int 	ret;
-	int		type;
+	char	*next_arg;
 
-	i = 1;
-	eflag = ft_strchr(format, '%');
-	while ((type = ft_select_type(eflag[i])) == 0)
-		i++;
-	ret = ft_select_flag(type, arg, format);
-	return (ret);
+	next_arg = ft_strchr(format, '%');
+	if (*format == '\0')
+		return (i);
+	if (next_arg == NULL)
+	{
+		ft_putstr(format);
+		return (i + ft_strlen(format));
+	}
+	else if ()
+	{
+
+	}
 }
 
 int		ft_printf(const char *format, ...)
 {
-	va_list		arg;
+	va_list		args;
 	int			ret;
 
-	va_start(arg, format);
+	va_start(args, format);
 	ft_putendl("\033[31mSTART fonction printf\033[0m");
-	ret = ft_check_param(arg, format);
-	va_end(arg);
+	ret = ft_check_param(&args, format, 0);
+	va_end(args);
 	ft_putendl("\n\033[32mEND fonction printf\033[0m");
 	ft_putstr("\033[35mvaleur ret = ");
 	ft_putnbr(ret);
