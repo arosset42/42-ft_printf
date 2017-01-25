@@ -18,6 +18,14 @@
 # include <stdarg.h>
 # include "libft/libft.h"
 
+/*
+**      ft_printf.c
+*/
 int		ft_printf(const char *format, ...);
+
+/*
+**      ft_string.c
+*/
+int     ft_s_S_convert(va_list arg, const char *format);
 
 #endif

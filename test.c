@@ -31,7 +31,7 @@ int     main(void)
     strvoid = "1";
 
     printf("convertion s : %s \n", str);
-    printf("convertion s : %lls \n", test);
+    printf("convertion s : %  00 00 0 10% \n");
 
 
     // printf("convertion p : %p \n", strvoid);

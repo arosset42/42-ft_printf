@@ -12,7 +12,15 @@
 
 #include "ft_printf.h"
 
-int		ft_chr_param(char param)
+/*
+**	1 => char *
+**	2 => void *
+**	3 => int
+**	4 => unsigned int
+**	5 => char
+**	6 => %
+*/
+int		ft_select_type(char param)
 {
 	if (param == '%')
 		return (6);
@@ -22,49 +30,43 @@ int		ft_chr_param(char param)
 	 	return (2);
 	else if (param == 'D' || param == 'd' || param == 'i')
 		return (3);
-	else if (param == 'o' || param == 'O' || param == 'u' || param == 'U' \
+	else if (param == 'o' || param == 'O' || param == 'u' || param == 'U' ||
 				param == 'x' || param == 'X')
 		return (4);
 	else if (param == 'c' || param == 'C')
 		return (5);
-	else if (ft_isdigit(param) == 1 || param == '.' || param == '#' || \
-	 			param == '+' || param == '-' || param == 'h'\
+	else if (ft_isdigit(param) == 1 || param == '.' || param == '#' ||
+	 			param == '+' || param == '-' || param == 'h' ||
 				param == 'l' || param == 'j' || param == 'z' || param == ' ')
 		return (0);
 	else
 		return (-1);
+}
 
+int		ft_select_flag(int type, va_list arg, const char *format)
+{
+	int		ret;
+	ret = 0;
+	ft_putstr("type = ");
+	ft_putnbr(type);
+	ft_putendl("");
+	if (type == 1)
+		ret = ft_s_S_convert(arg, format);
+	return (ret);
 }
 
 int		ft_check_param(va_list arg, const char *format)
 {
-	char	*chr;
+	char	*eflag;
 	int 	i;
-	int		ref;
 	int 	ret;
+	int		type;
 
-	chr = ft_strchr(format, '%');
-	i = 0;
-	ref = ft_chr_param(chr[i]);
-	while (ref == 0)
-	{
+	i = 1;
+	eflag = ft_strchr(format, '%');
+	while ((type = ft_select_type(eflag[i])) == 0)
 		i++;
-		ref = ft_chr_param(chr[i])
-	}
-	if (ref == 1)
-		ret = ft_string_param();
-	// else if (ref == 2)
-	// 	ret = ft_pointeur_param();
-	// else if (ref == 3)
-	// 	ret = ft_int_param();
-	// else if (ref == 4)
-	// 	ret == ft_unsigned_int_param();
-	// else if (ref == 5)
-	// 	ret == ft_char_param();
-	// else if (ref == 6)
-	// 	ret == ft_cent_param();
-	else
-		return (-1);
+	ret = ft_select_flag(type, arg, format);
 	return (ret);
 }
 
@@ -74,8 +76,23 @@ int		ft_printf(const char *format, ...)
 	int			ret;
 
 	va_start(arg, format);
-	//ft_putendl("va start");
-	ret = ft_check_param(arg);
+	ft_putendl("\033[31mSTART fonction printf\033[0m");
+	ret = ft_check_param(arg, format);
 	va_end(arg);
+	ft_putendl("\n\033[32mEND fonction printf\033[0m");
+	ft_putstr("\033[35mvaleur ret = ");
+	ft_putnbr(ret);
+	ft_putstr("\n\033[0m");
 	return (ret);
+}
+
+int		main(void)
+{
+	char *str;
+	char *strr;
+
+	str = "42";
+	strr = "coucou";
+	ft_printf("salut %s et %s", str, strr);
+	return (0);
 }

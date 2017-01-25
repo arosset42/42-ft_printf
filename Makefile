@@ -17,7 +17,7 @@ CFLAGS 		= 	-Wall -Werror -Wextra
 
 INCLUDES 	= 	ft_printf.h
 
-SRC 		= 	ft_printf.c
+SRC 		= 	ft_printf.c ft_string.c
 OBJ 		= 	$(SRC:.c=.o)
 
 # COLORS
@@ -47,6 +47,7 @@ $(NAME) : $(OBJ)
 	@echo $(C_OBJ) [ $< ] $(OK)
 clean :
 	@rm -f $(OBJ)
+	@rm -f ft_printf.h.gch
 	@echo $(C_DEL) OBJ $(NAME)
 
 fclean : clean
@@ -54,5 +55,14 @@ fclean : clean
 	@echo $(C_DEL) $(NAME)
 
 re : fclean all
+
+test :
+	@$(CC) $(CFLAGS) $(SRC) $(INCLUDES) libft.a
+	@rm -f ft_printf.h.gch
+	@./a.out
+	@rm -rf a.out
+
+norme :
+	@norminette $(SRC) $(INCLUDES)
 
 .PHONY: clean, fclean, re
