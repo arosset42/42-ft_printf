@@ -10,18 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char *str;
+	char	*frais;
+	int		i;
+	int		y;
+	int		len;
 
-	if (s1 == NULL || s2 == NULL)
-		return (0);
-	str = ft_strnew(ft_strlen(s1) + ft_strlen(s2));
-	if (str == NULL)
-		return (0);
-	ft_strcpy(str, s1);
-	ft_strcat(str, s2);
-	return (str);
+	y = 0;
+	if ((i = 0) && ft_strcmp(s1, "") == 0)
+		return ((char *)s1);
+	if (!s1 || !s2)
+		return (NULL);
+	len = ft_strlen(s1) + ft_strlen(s2) + 1;
+	if (!(frais = ft_strnew(len)))
+		return (NULL);
+	while (s1[i])
+	{
+		frais[i] = s1[i];
+		i++;
+	}
+	while (s2[y])
+		frais[i++] = s2[y++];
+	return (frais);
 }

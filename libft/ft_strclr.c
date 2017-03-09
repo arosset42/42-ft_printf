@@ -10,22 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/libft.h"
 
 void	ft_strclr(char *s)
 {
 	int i;
-	int delim;
 
-	if (s != NULL)
+	if (!s)
+		return ;
+	i = ft_strlen(s);
+	while (i >= 0)
 	{
-		delim = ft_strlen(s);
-		i = 0;
-		while (i < delim)
-		{
-			ft_putnbr(i);
-			s[i] = '\0';
-			i++;
-		}
+		s[i] = '\0';
+		i--;
 	}
 }

@@ -10,24 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/libft.h"
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char	*str;
+	char	*tronc;
 	size_t	i;
 
 	i = 0;
-	if (s == NULL)
-		return (0);
-	str = ft_strnew(len);
-	if (str == NULL)
-		return (0);
-	while (i < len)
+	if (!s)
+		return (NULL);
+	if (!(tronc = ft_strnew(len)))
+		return (NULL);
+	while (i < len && s[start + i] != '\0')
 	{
-		str[i] = s[i + start];
+		tronc[i] = s[start + i];
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
+	tronc[i] = '\0';
+	return (tronc);
 }

@@ -14,7 +14,7 @@ NAME 		= 	libft.a
 CC 			=	gcc
 CFLAGS 		= 	-Wall -Werror -Wextra
 
-INCLUDES 	= 	libft.h
+INCLUDES 	= 	./includes/libft.h
 
 SRC 		= 	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c     \
 				ft_memchr.c ft_memcmp.c ft_strlen.c ft_strdup.c ft_strcpy.c      \
@@ -44,27 +44,22 @@ SUCCESS		=	$(C_GOOD)SUCCESS$(C_NO)
 OK 			=	$(C_OK)OK$(C_NO)
 F_TEST 		= 	$(C_TEST)DEBUT TEST$(C_NO)
 ERROR		= 	$(C_ERROR) ERROR $(C_NO)
-DEL			= 	$(C_ERROR) DELETE $(C_NO)
-C_OBJ		= 	$(C_OK) OBJ $(NAME) $(C_NO)
 
 all : $(NAME)
 
 $(NAME) : $(OBJ)
 	@ar rcs $(NAME) $(OBJ)
 	@ranlib $(NAME)
-	@echo Lib : [ $(NAME) ] $(SUCCESS)
+	@echo [ $(NAME) ] $(SUCCESS)
 
-%.o: %.c $(INCLUDES)
+%.o: %.c ./includes/libft.h
 	@$(CC) $(CFLAGS) -c -o $@ $< -I $(INCLUDES)
-	@echo $(C_OBJ) [ $< ] $(OK)
 
 clean :
 	@rm -f $(OBJ)
-	@echo $(DEL) OBJ $(NAME)
-	
+
 fclean : clean
 	@rm -f $(NAME)
-	@echo $(DEL) $(NAME)
 
 re : fclean all
 

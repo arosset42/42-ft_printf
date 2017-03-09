@@ -27,28 +27,27 @@ C.
     va_end(va_list ap);
 
 
-s = char*				1
-S = char*				1
-p = void*				2
-d = int					3
-D = int					3
-i = int					3
-o = unsigned int
-O = unsigned int
-u = unsigned int
-U = unsigned int
-x = unsigned int
-X = unsigned int
-c = char
-C = char
+	AFTER a '%' the printf function parses until it has found a char that does not satisfy any of the flags/width/precision/length characteristics.
 
-sS -- char string
-p  -- pointer
-d  -- decimal integer
-D  --
-i  -- decimal integer
-oO -- octal
-uU -- unsigned int
-xX -- hexa HEXA
-cC -- character
-%% -- prints a "%";
+	"sSpdDioOuxXcC"
+
+	d/i : signed decimal
+	D   : long decimal
+	o   : unsigned octal
+	O   : unsigned long octal
+	u   : unsigned decimal
+	U   : unsigned long
+	x   : unsigned hexadecimal
+	s   : char string
+	S   : wide char string (ls)
+	c   : int printed as unsigned char
+	C   : wide char (lc)
+	p   : pointer (#x | #lx)
+
+		d / i				o u x					c			s
+	hh	signed char			unsigned char			x			x
+	h	short				unsigned short			x			x
+	ll	long long			unsigned long long		x			x
+	l	long				unsigned long			wint_t		wchar_t*
+	j	intmax_t			uintmax_t				x			x
+	z	signed size_t		size_t					x			x
