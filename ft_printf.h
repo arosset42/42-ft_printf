@@ -20,9 +20,14 @@
 
 typedef struct  s_args
 {
+	int			len_print;
 	int         precision;
 }				t_args;
 
-int		ft_printf(const char *format, ...);
+int		ft_printf(char *format, ...);
+void  	ft_printf_init(char **format, t_args *cylva);
+int		ft_str_len_print(const char *str, char c);
+int		ft_strchr_len(const char *str, char c);
+void	ft_init_struct(t_args *cylva);
 
 #endif

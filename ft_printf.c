@@ -12,8 +12,51 @@
 
 #include "ft_printf.h"
 
-int		ft_printf(const char *format, ...)
+int		ft_printf(char *format, ...)
 {
-	ft_putendl(format);
-	return (16);
+	va_list		va;
+	t_args 		cylva;
+	// int			ret;
+
+	va_start(va, format);
+	ft_init_struct(&cylva);
+	while (*format)
+	{
+		ft_printf_init(&format, &cylva);
+
+	}
+	va_end(va);
+	// ret = cylva.len_print;
+	return (cylva.len_print);
+}
+
+void  	ft_printf_init(char **format, t_args *cylva)
+{
+	cylva->len_print += ft_str_len_print(*format, '%');
+	(*format) += ft_strchr_len(*format, '%');
+}
+
+int		ft_str_len_print(const char *str, char c)
+{
+	int		len;
+
+	len = ft_strchr_len(str, c);
+	write(1, str, len);
+	return (len);
+}
+
+int		ft_strchr_len(const char *str, char c)
+{
+	int 	i;
+
+	i = 0;
+	while (str[i] && str[i] != c)
+		i++;
+	return (i);
+}
+
+void 	ft_init_struct(t_args *cylva)
+{
+
+	cylva->len_print = 0;
 }

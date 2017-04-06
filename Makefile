@@ -48,7 +48,7 @@ $(NAME) : $(OBJ)
 clean :
 	@rm -f $(OBJ)
 	@rm -f *.gch
-	@echo $(C_DEL) OBJ $(NAME)
+	@echo $(C_DEL) $(OBJ)
 
 fclean : clean
 	@rm -f $(NAME)
@@ -66,7 +66,7 @@ test :
 mtest : all
 	@echo $(F_TEST)
 	@$(CC) $(CFLAGS) main_test.c ft_printf.h libftprintf.a libft.a
-	@./a.out
+	@./a.out | cat -e
 
 norme :
 	@norminette $(SRC) $(INCLUDES)
