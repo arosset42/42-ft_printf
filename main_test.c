@@ -78,7 +78,7 @@ int		main(void)
 
 	test = 42;
 
-	ret = ft_printf("coucou\n", test);
+	ret = ft_printf("coucou%0d\n", test);
 	printf("==> ret = %d\n", ret);
 	return (0);
 }

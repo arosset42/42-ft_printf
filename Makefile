@@ -17,7 +17,7 @@ CFLAGS 		= 	-Wall -Werror -Wextra
 
 INCLUDES 	= 	ft_printf.h
 
-SRC 		= 	ft_printf.c ft_string.c
+SRC 		= 	ft_printf.c ft_get.c
 OBJ 		= 	$(SRC:.c=.o)
 
 # COLORS
@@ -67,6 +67,8 @@ mtest : all
 	@echo $(F_TEST)
 	@$(CC) $(CFLAGS) main_test.c ft_printf.h libftprintf.a libft.a
 	@./a.out | cat -e
+	@rm -f $(OBJ)
+	@rm -f *.gch
 
 norme :
 	@norminette $(SRC) $(INCLUDES)
