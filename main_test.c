@@ -80,5 +80,8 @@ int		main(void)
 
 	ret = ft_printf("coucou%#d\n", test);
 	printf("==> ret = %d\n", ret);
+
+	ret = ft_printf("coucou%hd\n", test);
+	printf("==> ret = %d\n", ret);
 	return (0);
 }

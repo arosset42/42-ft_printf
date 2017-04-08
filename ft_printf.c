@@ -25,9 +25,12 @@ int		ft_printf(char *format, ...)
 	{
 		ft_printf_init(&format, &cylva);
 		ft_get_tag(&format, &cylva);
-			ft_putstr("\nformat restant = ");
-			ft_putstr(format);
-			ft_putchar('\n');
+		if (ft_str_index("sSpdDioOuUxXcC%", &cylva) != -1)
+		{
+			fmt++;
+			ft_convert(va, &cylva);
+		}
+		else
 			stop = 1;
 	}
 	va_end(va);
@@ -39,6 +42,7 @@ void  	ft_printf_init(char **format, t_args *cylva)
 	cylva->len_print += ft_str_len_print(*format, '%');
 	(*format) += ft_strchr_len(*format, '%');
 	ft_init_struct(cylva);
+	ft_print_struct(cylva);
 }
 
 int		ft_str_len_print(const char *str, char c)
@@ -70,4 +74,5 @@ void 	ft_init_struct(t_args *cylva)
 	cylva->width = 0;
 	cylva->precision = 0;
 	cylva->base = 0;
+	cylva->m_lenght = '0';
 }
