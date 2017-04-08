@@ -17,7 +17,8 @@ CFLAGS 		= 	-Wall -Werror -Wextra
 
 INCLUDES 	= 	ft_printf.h
 
-SRC 		= 	ft_printf.c ft_get.c
+SRC 		= 	ft_printf.c ft_get.c ft_itoa_base.c ft_memalloc.c ft_bzero.c \
+				ft_atoi.c
 OBJ 		= 	$(SRC:.c=.o)
 
 # COLORS

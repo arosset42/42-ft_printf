@@ -28,6 +28,11 @@ typedef struct  s_args
 	int			f_moins;
 	int			f_space;
 	int			f_zero;
+	int			width;
+	int			precision;
+	int			base;
+	char		m_lenght;
+
 }				t_args;
 
 int		ft_printf(char *format, ...);
@@ -40,9 +45,14 @@ void	ft_init_struct(t_args *cylva);
 
 void 	ft_get_tag(char **format, t_args *cylva);
 void    ft_get_flags(char **format, t_args *cylva);
+void    ft_get_precision(char **format, t_args *cylva);
+void	ft_get_length(char **fmt, t_args *cylva);
 
 int     ft_str_index(char *str, char c);
 
-void ft_print_struct(t_args *cylva);
+int		nblen(long long int value, int base);
+char	*ft_itoa_base(long long int value, int base);
+int		ft_atoi(const char *str);
+void 	ft_print_struct(t_args *cylva);
 
 #endif

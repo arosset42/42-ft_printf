@@ -28,7 +28,7 @@ int		ft_printf(char *format, ...)
 			ft_putstr("\nformat restant = ");
 			ft_putstr(format);
 			ft_putchar('\n');
-		stop = 1;
+			stop = 1;
 	}
 	va_end(va);
 	return (cylva.len_print);
@@ -67,4 +67,7 @@ void 	ft_init_struct(t_args *cylva)
 	cylva->f_moins = 0;
 	cylva->f_space = 0;
 	cylva->f_zero = 0;
+	cylva->width = 0;
+	cylva->precision = 0;
+	cylva->base = 0;
 }
