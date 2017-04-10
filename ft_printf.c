@@ -12,32 +12,33 @@
 
 #include "ft_printf.h"
 
-int		ft_printf(char *format, ...)
+int		ft_printf(const char *format, ...)
 {
 	va_list		va;
 	t_args 		cylva;
+	char		*fmt;
 	int			stop;
 
 	stop = 0;
+
+	fmt = ft_strdup(format);
 	va_start(va, format);
 	cylva.len_print = 0;
-	while (*format && stop != 1)
+	while (*fmt && stop != 1)
 	{
-		ft_printf_init(&format, &cylva);
-		ft_get_tag(&format, &cylva);
-		// if (ft_str_index("sSpdDioOuUxXcC%", *format) != -1)
+		ft_printf_init(&fmt, &cylva);
+		ft_get_tag(&fmt, &cylva);
+		ft_print_struct(&cylva);
+		// if (ft_str_index("sSpdDioOuUxXcC%", *fmt) != -1)
 		// {
-		// 	format++;
+		// 	fmt++;
 		// 	ft_convert(va, &cylva);
 		// }
 
 		stop = 1;
 	}
 	va_end(va);
-	// while (cylva.len_print >= 0)
-	// {
-	//
-	// }
+
 	return (cylva.len_print);
 }
 
@@ -76,7 +77,7 @@ void 	ft_init_struct(t_args *cylva)
 	cylva->f_space = 0;
 	cylva->f_zero = 0;
 	cylva->width = 0;
-	cylva->precision = 0;
+	cylva->precision = -1;
 	cylva->base = 0;
 	cylva->m_lenght = '0';
 }

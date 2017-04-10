@@ -74,14 +74,27 @@
 int		main(void)
 {
 	int ret;
-	int test;
+	short test;
+	char	*str;
 
+	str = "TEST";
 	test = 42;
-
-	ret = ft_printf("coucou%#d\n", test);
+	ft_putstr("===> My ft_printf <===\n");
+	ret = ft_printf("coucou %#54.62hd\n", test);
+	ft_putstr("\n==> ret = ");
+	ft_putnbr(ret);
+	ft_putchar('\n');
+	ft_putstr("\n===>    printf    <===\n");
+	ret = printf("coucou %54.62hd\n", test);
 	printf("==> ret = %d\n", ret);
 
-	ret = ft_printf("coucou%hd\n", test);
-	printf("==> ret = %d\n", ret);
+
+   // intf("4567 |%-10]5d| plip\n", 12);
+   // intf("4567 |%10]5d| plip\n", 12);
+   // printf("|%10.5d|\n", -12);
+   // printf("|%10d|\n", -12);
+   // printf("|%010d|\n", -12);
+   // printf("|%-10.5d|\n", -12);
+   // printf("|%-010.5d|\n", -12);
 	return (0);
 }

@@ -52,23 +52,16 @@ clean :
 	@echo $(C_DEL) $(OBJ)
 
 fclean : clean
+	@rm -f printf_test
 	@rm -f $(NAME)
 	@echo $(C_DEL) $(NAME)
 
 re : fclean all
 
-test :
-	@echo $(F_TEST)
-	@$(CC) $(CFLAGS) $(SRC) $(INCLUDES) libft.a
-	@rm -f ft_printf.h.gch
-	@./a.out
-	@rm -rf a.out
-
 mtest : all
 	@echo $(F_TEST)
-	@$(CC) $(CFLAGS) main_test.c ft_printf.h libftprintf.a libft.a
-	@./a.out | cat -e
-	@rm -f $(OBJ)
+	@$(CC) $(CFLAGS) main_test.c libftprintf.a libft.a -o printf_test
+	@./printf_test | cat -e
 	@rm -f *.gch
 
 norme :

@@ -16,8 +16,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
-# include "Support/libft/includes/libft.h"
 
+# include "Support/libft/includes/libft.h"
 # include <stdio.h>
 
 typedef struct  s_args
@@ -37,7 +37,7 @@ typedef struct  s_args
 	char		operation;
 }				t_args;
 
-int		ft_printf(char *format, ...);
+int		ft_printf(const char *format, ...);
 void  	ft_printf_init(char **format, t_args *cylva);
 
 int		ft_str_len_print(const char *str, char c);
