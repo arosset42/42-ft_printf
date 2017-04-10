@@ -12,7 +12,7 @@ void 	ft_get_tag(char **format, t_args *cylva)
         ft_get_precision(format, cylva);
         ft_get_length(format, cylva);
         cylva->operation = **format;
-        ft_print_struct(cylva);
+        // ft_print_struct(cylva);
 
 }
 
@@ -86,9 +86,10 @@ int     ft_str_index(char *str, char c)
 
 void ft_print_struct(t_args *cylva)
 {
-    printf("=======================\n");
-    printf("len_print = %d, f_diese = %d, f_plus = %d, f_moins = %d, f_space = %d, f_zero = %d\n", cylva->len_print, cylva->f_diese, cylva->f_plus, cylva->f_moins, cylva->f_space, cylva->f_zero);
-    printf("\n\n width = %d, precision = %d, base = %d\n\n", cylva->width, cylva->precision, cylva->base);
-    printf("m_lenght = %c, Operation = %c\n", cylva->m_lenght, cylva->operation);
-    printf("=======================\n");
+    // printf("=======================\n");
+    // printf("len_print = %d, f_diese = %d, f_plus = %d, f_moins = %d, f_space = %d, f_zero = %d\n", cylva->len_print, cylva->f_diese, cylva->f_plus, cylva->f_moins, cylva->f_space, cylva->f_zero);
+    // printf("\n\n width = %d, precision = %d, base = %d\n\n", cylva->width, cylva->precision, cylva->base);
+    // printf("m_lenght = %c, Operation = %c\n", cylva->m_lenght, cylva->operation);
+    // printf("=======================\n");
+	cylva->len_print = 0;
 }

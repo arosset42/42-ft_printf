@@ -55,6 +55,9 @@ int     ft_str_index(char *str, char c);
 int		nblen(long long int value, int base);
 char	*ft_itoa_base(long long int value, int base);
 int		ft_atoi(const char *str);
+char	*ft_strdup(const char *s1);
+int		ft_isdigit(int c);
+
 
 void    ft_convert(va_list ap, t_args *cylva);
 

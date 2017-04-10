@@ -25,15 +25,19 @@ int		ft_printf(char *format, ...)
 	{
 		ft_printf_init(&format, &cylva);
 		ft_get_tag(&format, &cylva);
-		if (ft_str_index("sSpdDioOuUxXcC%", &cylva) != -1)
-		{
-			fmt++;
-			ft_convert(va, &cylva);
-		}
-		else
-			stop = 1;
+		// if (ft_str_index("sSpdDioOuUxXcC%", *format) != -1)
+		// {
+		// 	format++;
+		// 	ft_convert(va, &cylva);
+		// }
+
+		stop = 1;
 	}
 	va_end(va);
+	// while (cylva.len_print >= 0)
+	// {
+	//
+	// }
 	return (cylva.len_print);
 }
 
@@ -42,7 +46,7 @@ void  	ft_printf_init(char **format, t_args *cylva)
 	cylva->len_print += ft_str_len_print(*format, '%');
 	(*format) += ft_strchr_len(*format, '%');
 	ft_init_struct(cylva);
-	ft_print_struct(cylva);
+	// ft_print_struct(cylva);
 }
 
 int		ft_str_len_print(const char *str, char c)
