@@ -76,16 +76,18 @@ int		main(void)
 	int ret;
 	short test;
 	char	*str;
+	unsigned long testtest;
 
+	testtest = 50;
 	str = "TEST";
 	test = 42;
 	ft_putstr("===> My ft_printf <===\n");
-	ret = ft_printf("coucou %#54.62hd\n", test);
+	ret = ft_printf("coucou %% %5.5d\n", test);
 	ft_putstr("\n==> ret = ");
 	ft_putnbr(ret);
 	ft_putchar('\n');
 	ft_putstr("\n===>    printf    <===\n");
-	ret = printf("coucou %54.62hd\n", test);
+	ret = printf("coucou %% %5.5d\n", test);
 	printf("==> ret = %d\n", ret);
 
 

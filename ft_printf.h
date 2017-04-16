@@ -50,6 +50,8 @@ void    ft_get_flags(char **format, t_args *cylva);
 void    ft_get_precision(char **format, t_args *cylva);
 void	ft_get_length(char **fmt, t_args *cylva);
 
+void 	ft_error_double_f(char **format, t_args *cylva);
+
 int     ft_str_index(char *str, char c);
 
 int		nblen(long long int value, int base);

@@ -11,8 +11,35 @@ void 	ft_get_tag(char **format, t_args *cylva)
         }
         ft_get_precision(format, cylva);
         ft_get_length(format, cylva);
+		ft_error_double_f(format, cylva);
         cylva->operation = **format;
+		// ft_error_tag(cylva);
+}
 
+// void 	ft_error_tag(t_args *cylva)
+// {
+// 	if (ft_str_index("uU", cylva->operation) != -1 && (cylva->f_space == 1
+// 		|| cylva->f_plus == 1))
+//
+// }
+
+void 	ft_error_double_f(char **format, t_args *cylva)
+{
+	while (ft_str_index(".#0+ ", **format) != -1)
+	{
+		if (cylva->f_diese == 0 && cylva->f_plus == 0 && cylva->f_moins == 0
+			&& cylva->f_space == 0 && cylva->f_zero == 0)
+			ft_get_flags(format, cylva);
+		else if (**format == '+')
+		{
+			cylva->f_plus = 1;
+			(*format)++;
+		}
+		else
+			(*format)++;
+	}
+	if (cylva->f_diese == 1 && cylva->f_moins == 1 && cylva->f_plus == 1)
+		cylva->precision = 0;
 }
 
 void	ft_get_length(char **fmt, t_args *cylva)

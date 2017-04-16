@@ -47,7 +47,6 @@ void  	ft_printf_init(char **format, t_args *cylva)
 	cylva->len_print += ft_str_len_print(*format, '%');
 	(*format) += ft_strchr_len(*format, '%');
 	ft_init_struct(cylva);
-	// ft_print_struct(cylva);
 }
 
 int		ft_str_len_print(const char *str, char c)
