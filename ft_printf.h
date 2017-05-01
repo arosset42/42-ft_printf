@@ -20,6 +20,9 @@
 # include "Support/libft/includes/libft.h"
 # include <stdio.h>
 
+# define S_OPE cylva->operation
+# define S_M_LEN cylva->m_lenght
+
 typedef struct  s_args
 {
 	char		f_diese;
@@ -35,6 +38,11 @@ typedef struct  s_args
 
 	char		m_lenght;
 	char		operation;
+
+	wchar_t		wchar;
+	wchar_t		*wstr;
+	int			c;
+	char		*str;
 }				t_args;
 
 int		ft_printf(const char *format, ...);
@@ -59,10 +67,11 @@ char	*ft_itoa_base(long long int value, int base);
 int		ft_atoi(const char *str);
 char	*ft_strdup(const char *s1);
 int		ft_isdigit(int c);
-
+void	ft_strdel(char **as);
 
 void    ft_convert(va_list ap, t_args *cylva);
 
 void 	ft_print_struct(t_args *cylva);
-
+void 	ft_putstr(const char *s);
+void 	ft_putchar(char c);
 #endif

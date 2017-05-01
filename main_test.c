@@ -73,22 +73,28 @@
 
 int		main(void)
 {
-	int ret;
-	short test;
-	char	*str;
-	unsigned long testtest;
+	int 			ret;
+	short 			test;
+	char			*str;
+	char 			c;
+	char 			b;
+	unsigned long 	testtest;
 
+
+	c = 'a';
+	b = 'b';
 	testtest = 50;
-	str = "TEST";
+	str = "train";
 	test = 42;
-	ft_putstr("===> My ft_printf <===\n");
-	ret = ft_printf("coucou %% %5.5d\n", test);
-	ft_putstr("\n==> ret = ");
-	ft_putnbr(ret);
-	ft_putchar('\n');
-	ft_putstr("\n===>    printf    <===\n");
-	ret = printf("coucou %% %5.5d\n", test);
-	printf("==> ret = %d\n", ret);
+
+	ret = ft_printf("Coucou %s\n", str);
+
+
+
+
+	// printf("\nret = %d\n", ret);
+	// ret = printf("coucou %c\n", c);
+	// printf("\nret = %d\n", ret);
 
 
    // intf("4567 |%-10]5d| plip\n", 12);

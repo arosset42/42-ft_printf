@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arosset <arosset@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/10 12:20:05 by arosset           #+#    #+#             */
-/*   Updated: 2016/11/16 11:41:35 by arosset          ###   ########.fr       */
+/*   Created: 2016/11/05 10:23:51 by arosset           #+#    #+#             */
+/*   Updated: 2016/11/11 13:01:31 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_strdel(char **as)
+void	ft_putstr(const char *s)
 {
-	if (as != NULL)
+	int i;
+
+	i = 0;
+	if (s != NULL)
 	{
-		free(*as);
-		*as = NULL;
+		while (s[i] != '\0')
+		{
+			ft_putchar(s[i]);
+			i++;
+		}
 	}
 }

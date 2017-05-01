@@ -13,12 +13,14 @@
 NAME 		= 	libftprintf.a
 
 CC 			=	gcc
+
 CFLAGS 		= 	-Wall -Werror -Wextra
 
 INCLUDES 	= 	ft_printf.h
 
 SRC 		= 	ft_printf.c ft_get.c ft_itoa_base.c ft_memalloc.c ft_bzero.c \
-				ft_atoi.c ft_isdigit.c ft_strdup.c ft_strlen.c ft_strcpy.c
+				ft_atoi.c ft_isdigit.c ft_strdup.c ft_strlen.c ft_strcpy.c \
+				ft_convert.c ft_strdel.c ft_putstr.c ft_putchar.c
 OBJ 		= 	$(SRC:.c=.o)
 
 # COLORS
@@ -52,16 +54,23 @@ clean :
 	@echo $(C_DEL) $(OBJ)
 
 fclean : clean
-	@rm -f printf_test
 	@rm -f $(NAME)
 	@echo $(C_DEL) $(NAME)
 
 re : fclean all
 
+test :
+	@echo $(F_TEST)
+	@$(CC) $(CFLAGS) $(SRC) $(INCLUDES) libft.a
+	@rm -f ft_printf.h.gch
+	@./a.out
+	@rm -rf a.out
+
 mtest : all
 	@echo $(F_TEST)
-	@$(CC) $(CFLAGS) main_test.c libftprintf.a libft.a -o printf_test
-	@./printf_test | cat -e
+	@$(CC) $(CFLAGS) main_test.c ft_printf.h libftprintf.a libft.a
+	@./a.out | cat -e
+	@rm -f $(OBJ)
 	@rm -f *.gch
 
 norme :

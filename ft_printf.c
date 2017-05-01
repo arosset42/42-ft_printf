@@ -17,28 +17,24 @@ int		ft_printf(const char *format, ...)
 	va_list		va;
 	t_args 		cylva;
 	char		*fmt;
-	int			stop;
-
-	stop = 0;
 
 	fmt = ft_strdup(format);
 	va_start(va, format);
 	cylva.len_print = 0;
-	while (*fmt && stop != 1)
+	while (*fmt)
 	{
 		ft_printf_init(&fmt, &cylva);
 		ft_get_tag(&fmt, &cylva);
-		ft_print_struct(&cylva);
-		// if (ft_str_index("sSpdDioOuUxXcC%", *fmt) != -1)
-		// {
-		// 	fmt++;
-		// 	ft_convert(va, &cylva);
-		// }
-
-		stop = 1;
+		// ft_print_struct(&cylva);
+		if (ft_str_index("sSpdDioOuUxXcC%", *fmt) != -1)
+		{
+			fmt++;
+			ft_convert(va, &cylva);
+		}
+		// sleep(1);
 	}
 	va_end(va);
-
+	// free(&fmt);
 	return (cylva.len_print);
 }
 
@@ -79,4 +75,5 @@ void 	ft_init_struct(t_args *cylva)
 	cylva->precision = -1;
 	cylva->base = 0;
 	cylva->m_lenght = '0';
+	cylva->operation = '0';
 }
