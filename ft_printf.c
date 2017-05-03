@@ -76,4 +76,8 @@ void 	ft_init_struct(t_args *cylva)
 	cylva->base = 0;
 	cylva->m_lenght = '0';
 	cylva->operation = '0';
+	cylva->wchar = '0';
+	cylva->wstr = 0;
+	cylva->c = 0;
+	cylva->str = "0";
 }

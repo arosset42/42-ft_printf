@@ -20,7 +20,7 @@ INCLUDES 	= 	ft_printf.h
 
 SRC 		= 	ft_printf.c ft_get.c ft_itoa_base.c ft_memalloc.c ft_bzero.c \
 				ft_atoi.c ft_isdigit.c ft_strdup.c ft_strlen.c ft_strcpy.c \
-				ft_convert.c ft_strdel.c ft_putstr.c ft_putchar.c
+				ft_convert.c ft_strdel.c ft_putstr.c ft_putchar.c ft_print.c
 OBJ 		= 	$(SRC:.c=.o)
 
 # COLORS

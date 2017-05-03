@@ -72,6 +72,10 @@ void	ft_strdel(char **as);
 void    ft_convert(va_list ap, t_args *cylva);
 
 void 	ft_print_struct(t_args *cylva);
+
+void    ft_print_str(t_args *cylva);
 void 	ft_putstr(const char *s);
 void 	ft_putchar(char c);
+
+
 #endif
