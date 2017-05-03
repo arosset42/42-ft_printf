@@ -28,5 +28,5 @@ void    ft_convert(va_list ap, t_args *cylva)
     	// ft_print_nbr(&cylva, ret);
     else
         // ft_putstr(cylva->str);
-    	ft_print_str(&cylva);
+    	ft_print_str(*cylva);
 }
