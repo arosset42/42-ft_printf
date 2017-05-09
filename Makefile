@@ -21,7 +21,7 @@ INCLUDES 	= 	ft_printf.h
 SRC 		= 	ft_printf.c ft_get.c ft_itoa_base.c ft_memalloc.c ft_bzero.c \
 				ft_atoi.c ft_isdigit.c ft_strdup.c ft_strlen.c ft_strcpy.c \
 				ft_convert.c ft_strdel.c ft_putstr.c ft_putchar.c ft_print.c \
-				ft_len_print.c
+				ft_len_print.c ft_max_str_print.c ft_put_len_str.c 
 OBJ 		= 	$(SRC:.c=.o)
 
 # COLORS
@@ -60,20 +60,14 @@ fclean : clean
 
 re : fclean all
 
-test :
-	@echo $(F_TEST)
-	@$(CC) $(CFLAGS) $(SRC) $(INCLUDES) libft.a
-	@rm -f ft_printf.h.gch
-	@./a.out
-	@rm -rf a.out
-
 mtest : all
 	@echo $(F_TEST)
 	@$(CC) $(CFLAGS) main_test.c ft_printf.h libftprintf.a libft.a
 	@./a.out | cat -e
+
+cleantest :
 	@rm -f $(OBJ)
 	@rm -f *.gch
-
 norme :
 	@norminette $(SRC) $(INCLUDES)
 

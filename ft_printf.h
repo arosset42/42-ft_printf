@@ -62,6 +62,7 @@ void 	ft_error_double_f(char **format, t_args *cylva);
 
 int     ft_str_index(char *str, char c);
 
+int		ft_wstrlen(wchar_t *ws, int max);
 int		nblen(long long int value, int base);
 char	*ft_itoa_base(long long int value, int base);
 int		ft_atoi(const char *str);
@@ -74,10 +75,13 @@ void    ft_convert(va_list ap, t_args *cylva);
 void 	ft_print_struct(t_args *cylva);
 
 void    ft_print_str(t_args cylva);
+void	ft_print_nbr(t_args cylva, long long int nbr);
 void 	ft_putstr(const char *s);
 void 	ft_putchar(char c);
+void	ft_put_len_str(char const *s, int len);
 
 int		ft_len_print_str(t_args *cylva);
+int		ft_str_max_print(t_args *cylva);
 
 
 #endif

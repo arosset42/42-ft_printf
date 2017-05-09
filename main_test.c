@@ -84,10 +84,14 @@ int		main(void)
 	c = 'a';
 	b = 'b';
 	testtest = 50;
-	str = "train";
+	str = "tu fonctionne ?";
 	test = 42;
 
 	ret = ft_printf("Coucou %s\n", str);
+	ft_putnbr(ret);
+	// ret = ft_printf("Coucou %c\n", c);
+	// ft_putnbr(ret);
+
 
 
 

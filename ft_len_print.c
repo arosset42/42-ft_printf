@@ -27,3 +27,29 @@ int		ft_len_print_str(t_args *cylva)
 	else
 		return (max);
 }
+
+int		ft_wstrlen(wchar_t *ws, int max)
+{
+	int	i;
+	int	len;
+
+	if (!ws)
+		return (-1);
+	i = 0;
+	len = 0;
+	if (max == -1)
+		max = 2147483647;
+	while (ws[i])
+	{
+		if (len + 1 <= max && ws[i] <= 0x7F)
+			len += 1;
+		else if (len + 2 <= max && ws[i] <= 0x7FF)
+			len += 2;
+		else if (len + 3 <= max && ws[i] <= 0xFFFF)
+			len += 3;
+		else if (len + 4 <= max)
+			len += 4;
+		i++;
+	}
+	return (len);
+}

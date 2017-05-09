@@ -25,10 +25,11 @@ int		ft_printf(const char *format, ...)
 	{
 		ft_printf_init(&fmt, &cylva);
 		ft_get_tag(&fmt, &cylva);
-		// ft_print_struct(&cylva);
+	//	ft_print_struct(&cylva);
 		if (ft_str_index("sSpdDioOuUxXcC%", *fmt) != -1)
 		{
 			fmt++;
+
 			ft_convert(va, &cylva);
 		}
 		// sleep(1);

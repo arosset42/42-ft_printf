@@ -24,9 +24,13 @@ void    ft_convert(va_list ap, t_args *cylva)
     	ret *= -1;
     }
     if (ft_str_index("pdDioOuUxX%", S_OPE) != -1)
-        printf("coucou print DD\n");
-    	// ft_print_nbr(&cylva, ret);
+    	ft_print_nbr(*cylva, ret);
     else
-        // ft_putstr(cylva->str);
-    	ft_print_str(*cylva);
+    {
+        //ft_putstr(cylva->str);
+        //ft_print_struct(&cylva);
+        ft_print_str(*cylva);
+        // cylva->len_print += 10000;
+        // ft_putnbr(cylva->len_print);
+    }
 }
