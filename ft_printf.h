@@ -45,43 +45,51 @@ typedef struct  s_args
 	char		*str;
 }				t_args;
 
-int		ft_printf(const char *format, ...);
-void  	ft_printf_init(char **format, t_args *cylva);
+int				ft_printf(const char *format, ...);
+void  			ft_printf_init(char **format, t_args *cylva);
 
-int		ft_str_len_print(const char *str, char c);
-int		ft_strchr_len(const char *str, char c);
+int				ft_str_len_print(const char *str, char c);
+int				ft_strchr_len(const char *str, char c);
 
-void	ft_init_struct(t_args *cylva);
+void			ft_init_struct(t_args *cylva);
 
-void 	ft_get_tag(char **format, t_args *cylva);
-void    ft_get_flags(char **format, t_args *cylva);
-void    ft_get_precision(char **format, t_args *cylva);
-void	ft_get_length(char **fmt, t_args *cylva);
+void 			ft_get_tag(char **format, t_args *cylva);
+void    		ft_get_flags(char **format, t_args *cylva);
+void    		ft_get_precision(char **format, t_args *cylva);
+void			ft_get_length(char **fmt, t_args *cylva);
 
-void 	ft_error_double_f(char **format, t_args *cylva);
+void 			ft_error_double_f(char **format, t_args *cylva);
 
-int     ft_str_index(char *str, char c);
+int 		    ft_str_index(char *str, char c);
 
-int		ft_wstrlen(wchar_t *ws, int max);
-int		nblen(long long int value, int base);
-char	*ft_itoa_base(long long int value, int base);
-int		ft_atoi(const char *str);
-char	*ft_strdup(const char *s1);
-int		ft_isdigit(int c);
-void	ft_strdel(char **as);
+int				ft_wstrlen(wchar_t *ws, int max);
+int				nblen(long long int value, int base);
+int				ft_power(int n, int pow);
+char			*ft_itoa_base(long long int value, int base);
+int				ft_atoi(const char *str);
+char			*ft_strdup(const char *s1);
+int				ft_isdigit(int c);
+int				ft_isupper(int c);
+void			ft_strdel(char **as);
 
-void    ft_convert(va_list ap, t_args *cylva);
+void    		ft_convert(va_list ap, t_args *cylva);
+long long int   ft_convert_nb(va_list ap, t_args *cylva);
+long long int   ft_convert_uint(va_list ap, t_args *cylva);
+long long int   ft_convert_int(va_list ap, t_args *cylva);
 
-void 	ft_print_struct(t_args *cylva);
+void 			ft_print_struct(t_args *cylva);
 
-void    ft_print_str(t_args cylva);
-void	ft_print_nbr(t_args cylva, long long int nbr);
-void 	ft_putstr(const char *s);
-void 	ft_putchar(char c);
-void	ft_put_len_str(char const *s, int len);
+void    		ft_print_str(t_args *cylva);
+void			ft_print_nbr(t_args *cylva, long long int ret);
 
-int		ft_len_print_str(t_args *cylva);
-int		ft_str_max_print(t_args *cylva);
+void 			ft_putstr(const char *s);
+void 			ft_putchar(char c);
+void			ft_put_len_str(char const *s, int len);
+void    		ft_putwchar(wchar_t wc);
+void			ft_putwstr(wchar_t *ws, int len);
+
+int				ft_len_print_str(t_args *cylva);
+int				ft_str_max_print(t_args *cylva);
 
 
 #endif

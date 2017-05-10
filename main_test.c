@@ -73,23 +73,36 @@
 
 int		main(void)
 {
+	char* l = setlocale(LC_ALL, "");
+	if (l == NULL)
+		printf("locale not set\n\n");
+
 	int 			ret;
+
+	int				nbr;
 	short 			test;
 	char			*str;
 	char 			c;
 	char 			b;
 	unsigned long 	testtest;
+	wchar_t			wc;
+	wchar_t			*wstr;
 
-
+	wc = L'⾹';
+	wstr = L"⾹⾵⽲Ѥ";
 	c = 'a';
-	b = 'b';
+	b = ':';
 	testtest = 50;
-	str = "tu fonctionne ?";
+	str = "abc";
 	test = 42;
+	nbr = 8004;
 
-	ret = ft_printf("Coucou %s\n", str);
+	// ret = ft_printf("%s is a string %c %s\n", "this", b, str);
+	// ft_putnbr(ret);
+	// ft_putchar('\n');
+	ret = ft_printf("nbr : %d\n", nbr);
 	ft_putnbr(ret);
-	// ret = ft_printf("Coucou %c\n", c);
+	// ret = printf("put wchar : %S\n", wstr);
 	// ft_putnbr(ret);
 
 
