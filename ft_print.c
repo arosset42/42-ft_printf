@@ -64,7 +64,7 @@ void	ft_print_nbr(t_args *cylva, long long int nbr)
 
 void    ft_print_arg_nbr(t_args *cylva, int max, long long int nbr)
 {
-    if (((S_ZERO == 0 || S_MOINS == 0) || (S_ZERO == 1 && S_PREC >= 0)))
+    if (((S_ZERO == 1 || S_MOINS == 1) || (S_ZERO == 1 && S_PREC >= 0)))
         ft_put_n_char(' ', cylva->width - max);
     if ((S_SPACE == 1 ) && S_OPE != '%')
         write(1, " ", 1);
