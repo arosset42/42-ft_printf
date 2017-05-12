@@ -32,10 +32,10 @@ int		ft_printf(const char *format, ...)
 
 			ft_convert(va, &cylva);
 		}
-		// sleep(1);
+	 	//sleep(1);
 	}
 	va_end(va);
-	// free(&fmt);
+	// ft_strdel(&fmt);
 	return (cylva.len_print);
 }
 

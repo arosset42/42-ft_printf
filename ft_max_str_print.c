@@ -17,22 +17,14 @@ int		ft_str_max_print(t_args *cylva)
 	int	max;
 
 	max = 0;
-	// printf("m_lenght = %c, ope = %c\n", cylva->m_lenght, S_OPE);
 	if (S_OPE == 's' && S_M_LEN == '0')
 		max = ft_strlen(cylva->str);
 	else if (S_OPE == 'S' || (S_M_LEN == 'l' && S_OPE == 's'))
-	{
-		// ft_putchar('B');
-		max = ft_wstrlen(cylva->wstr, cylva->precision);
-	}
+		max = ft_wstrlen(cylva->wstr, S_PREC);
 	else if (S_OPE == 'c' && !S_M_LEN)
-	{
-		// ft_putchar('C');
 		max = 1;
-	}
 	else
 	{
-		// ft_putchar('D');
 		if (cylva->wchar <= 0x7F)
 			max = 1;
 		else if (cylva->wchar <= 0x7FF)
@@ -42,8 +34,44 @@ int		ft_str_max_print(t_args *cylva)
 		else
 			max = 4;
 	}
-	if (cylva->precision >= 0 && S_OPE != 'c' && S_OPE != 'C')
-		return (max > cylva->precision ? cylva->precision : max);
+	if (S_PREC >= 0 && S_OPE != 'c' && S_OPE != 'C')
+		return (max > S_PREC ? S_PREC : max);
 	else
 		return (max);
+}
+
+int		ft_nbr_max_print(long long int nbr, t_args *cylva)
+{
+	int 	max;
+	int		len;
+
+	len = (nbr < 0) ? 1 : 0;
+	ft_set_base(cylva);
+	if (ft_str_index("dDi", S_OPE) != -1)
+		len += nblen(nbr, cylva->base);
+	else
+		len = unblen((unsigned long long)nbr, cylva->base);
+	max = (len > S_PREC) ? len : S_PREC;
+	if (max == S_PREC && cylva->width == 0 && (S_OPE == 'o' || S_OPE == 'O'))
+		max--;
+	if ((cylva->f_diese == 1 && (S_OPE == 'o' || S_OPE == 'O')) ||
+			((cylva->f_plus == 1 || cylva->f_moins == 1) && S_OPE != '%'))
+		max++;
+	if ((cylva->f_diese == 1 && (S_OPE == 'X' || S_OPE == 'x')) || S_OPE == 'p')
+		max += 2;
+	if (!nbr && S_PREC == -1)
+		max--;
+	return (max);
+}
+
+void 	ft_set_base(t_args *cylva)
+{
+	if (S_OPE == 'x' || S_OPE  == 'X' || S_OPE == 'p')
+		cylva->base = 16;
+	else if (S_OPE == 'o' || S_OPE == 'O')
+		cylva->base = 8;
+	else
+		cylva->base = 10;
+	if (S_OPE == '%')
+		S_PREC = -1;
 }

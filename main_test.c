@@ -79,28 +79,43 @@ int		main(void)
 
 	int 			ret;
 
+	int				nbr2;
 	int				nbr;
+	unsigned int	unbr;
 	short 			test;
+
 	char			*str;
+	char			*str2;
+
 	char 			c;
 	char 			b;
+
 	unsigned long 	testtest;
+
 	wchar_t			wc;
 	wchar_t			*wstr;
 
-	wc = L'⾹';
-	wstr = L"⾹⾵⽲Ѥ";
+	nbr2 = 50;
+	nbr = 42;
+	unbr = 4;
+	test = 5;
+
+	str = "COUCOU";
+	str2 = "ALLO";
+
 	c = 'a';
 	b = ':';
+
 	testtest = 50;
-	str = "abc";
-	test = 42;
-	nbr = 8004;
+
+	wc = L'⾹';
+	wstr = L"⾹⾵⽲Ѥ";
 
 	// ret = ft_printf("%s is a string %c %s\n", "this", b, str);
 	// ft_putnbr(ret);
 	// ft_putchar('\n');
-	ret = ft_printf("nbr : %d\n", nbr);
+	ret = printf("%d %d %d %d gg!", 1, -2, 33, 42, 0);
+	ft_putchar('\n');
 	ft_putnbr(ret);
 	// ret = printf("put wchar : %S\n", wstr);
 	// ft_putnbr(ret);
