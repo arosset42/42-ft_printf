@@ -18,8 +18,7 @@ void	ft_print_str(t_args *cylva)
 
 	total = ft_str_max_print(cylva);
 	if (cylva->operation == 's' && cylva->m_lenght == '0')
-		total == 0 ? ft_put_len_str(NULL, -1) :
-			ft_put_len_str(cylva->str, total);
+		total == 0 ? ft_put_len_str(NULL, -1) :	ft_put_len_str(cylva->str, total);
 	else if (cylva->operation == 'c')
 		ft_putchar(cylva->c);
 	else if (cylva->operation == 'S' ||

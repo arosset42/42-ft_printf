@@ -93,6 +93,7 @@ int		main(void)
 
 	unsigned long 	testtest;
 
+	void 			*vide;
 	wchar_t			wc;
 	wchar_t			*wstr;
 
@@ -111,28 +112,23 @@ int		main(void)
 
 	wc = L'⾹';
 	wstr = L"⾹⾵⽲Ѥ";
+	vide = "cdtt";
 
 	// ret = ft_printf("%s is a string %c %s\n", "this", b, str);
 	// ft_putnbr(ret);
 	// ft_putchar('\n');
-	ret = printf("a%Sb%sc%S", L"ÊM-M-^Q", "42", L"ÁM-^L´");
+	ret = ft_printf("test %s\n", "coucou");
 	ft_putchar('\n');
 	ft_putnbr(ret);
 	ft_putchar('\n');
-	// ret = ft_printf("%010x", 542);
+	// ret = printf("test %p", vide);
 	// ft_putchar('\n');
 	// ft_putnbr(ret);
 	// ft_putchar('\n');
 
-
-
-
-
 	// printf("\nret = %d\n", ret);
 	// ret = printf("coucou %c\n", c);
 	// printf("\nret = %d\n", ret);
-
-
    // ft_printf("4567 |%-10]5d| plip\n", 12);
    // ft_printf("4567 |%10]5d| plip\n", 12);
    // ft_printf("|%10.5d|\n", -12);
