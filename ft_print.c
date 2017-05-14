@@ -14,42 +14,44 @@
 
 void	ft_print_str(t_args *cylva)
 {
-	int		total;
+	int	total;
 
+	ft_print_struct(cylva);
 	total = ft_str_max_print(cylva);
-	if (cylva->operation == 's' && cylva->m_lenght == '0')
-		total == 0 ? ft_put_len_str(NULL, -1) :	ft_put_len_str(cylva->str, total);
-	else if (cylva->operation == 'c')
+	if (S_OPE == 's' && S_PREC && !S_M_LEN && cylva->str == NULL)
+		total = 6;
+	ft_undefined(cylva, NULL, total);
+	if (S_OPE == 's' && !S_M_LEN)
+		total == 0 ? ft_put_len_str(NULL, -1) : ft_put_len_str(cylva->str, total);
+	else if (S_OPE == 'c' && !S_M_LEN)
 		ft_putchar(cylva->c);
-	else if (cylva->operation == 'S' ||
-				(cylva->m_lenght == 'l' && cylva->operation == 's'))
+	else if (S_OPE == 'S' || (S_M_LEN == 'l' && S_OPE == 's'))
 	{
 		if (total == -1)
 		{
-			ft_put_len_str(NULL, -1);
+			ft_put_len_str("(null)", 6);
 			total = 6;
 		}
-		ft_putwstr(cylva->wstr, total);
+		else
+			ft_putwstr(cylva->wstr, total);
 	}
 	else
 		ft_putwchar(cylva->wchar);
 	cylva->len_print += total > cylva->width ? total : cylva->width;
-	if (cylva->f_mo_ze == '-')
-	{
+	if (S_MO_ZE == '-')
 		ft_put_n_char(' ', cylva->width - total);
-	}
 }
 
 void	ft_print_nbr(t_args *cylva, long long int nbr)
 {
-	int		max;
+	int	max;
 
 	if (!nbr && S_OPE != 'o' && S_OPE != 'O')
-		cylva->f_diese = 0;
-	if (!nbr && S_PREC == -1 && S_OPE == 'o' && cylva->f_diese == 1)
+		S_DIESE = 0;
+	if (!nbr && S_PREC == -1 && S_OPE == 'o' && S_DIESE == '#')
 		S_PREC = 0;
 	max = ft_nbr_max_print(nbr, cylva);
-	cylva->len_print += BIGGER(max, BIGGER(cylva->width, cylva->precision));
+	cylva->len_print += BIGGER(max, BIGGER(cylva->width, S_PREC));
 	ft_print_arg_nbr(cylva, max, nbr);
 	if (cylva->base == 16 && S_OPE == 'X')
 		cylva->base = 1;
@@ -57,7 +59,7 @@ void	ft_print_nbr(t_args *cylva, long long int nbr)
 		write(1, "%", 1);
 	if ((nbr || S_PREC) && S_OPE != '%')
 		ft_print_base(cylva, nbr);
-	if (cylva->f_mo_ze == '-' && cylva->width > cylva->precision)
+	if (S_MO_ZE == '-' && cylva->width > S_PREC)
 		ft_put_n_char(' ', cylva->width - max);
 }
 
@@ -67,7 +69,8 @@ void	ft_print_arg_nbr(t_args *cylva, int max, long long int nbr)
 		ft_put_n_char(' ', cylva->width - max);
 	if (S_PL_SP && S_OPE != '%')
 		write(1, &S_PL_SP, 1);
-	if ((S_DIESE == '#' && (S_OPE == 'X' || S_OPE == 'x')) || S_OPE == 'p')
+	if ((S_DIESE == '#'
+				&& (S_OPE == 'X' || S_OPE == 'x')) || S_OPE == 'p')
 		S_OPE == 'X' ? write(1, "0X", 2) : write(1, "0x", 2);
 	if (S_DIESE == '#' && (S_OPE == 'o' || S_OPE == 'O'))
 	{

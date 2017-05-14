@@ -16,6 +16,7 @@ void			convert(va_list ap, char *opt, int *plen, t_char string)
 {
 	long long int	ret;
 
+	ft_putchar('b');
 	ret = 0;
 	if (opt[4] == '%')
 		ret = 1;
@@ -38,7 +39,10 @@ void			convert(va_list ap, char *opt, int *plen, t_char string)
 	if (ft_strindexof("pdDioOuUxX%", opt[4]) != -1)
 		print_nbr(opt, plen, ret);
 	else
+	{
+		ft_putchar('a');
 		print_str(opt, plen, string);
+	}
 }
 
 long long int	convert_nb(va_list ap, char c, char *opt)

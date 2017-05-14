@@ -17,7 +17,7 @@ int		ft_str_max_print(t_args *cylva)
 	int	max;
 
 	max = 0;
-	if (S_OPE == 's' && S_M_LEN == '0')
+	if (S_OPE == 's' && !S_M_LEN)
 		max = ft_strlen(cylva->str);
 	else if (S_OPE == 'S' || (S_M_LEN == 'l' && S_OPE == 's'))
 		max = ft_wstrlen(cylva->wstr, S_PREC);
@@ -52,12 +52,12 @@ int		ft_nbr_max_print(long long int nbr, t_args *cylva)
 	else
 		len = unblen((unsigned long long)nbr, cylva->base);
 	max = (len > S_PREC) ? len : S_PREC;
-	if (max == S_PREC && cylva->width == 0 && (S_OPE == 'o' || S_OPE == 'O'))
+	if (max == S_PREC && !cylva->width && (S_OPE == 'o' || S_OPE == 'O'))
 		max--;
 	if ((S_DIESE == '#' && (S_OPE == 'o' || S_OPE == 'O')) ||
-			(S_MO_ZE && S_OPE != '%'))
+			(S_PL_SP && S_OPE != '%'))
 		max++;
-	if ((S_DIESE == '#' && (S_OPE == 'X' || S_OPE == 'x')) || S_OPE == 'p')
+	if ((S_DIESE == '#' && (S_OPE == 'x' || S_OPE == 'X')) || S_OPE == 'p')
 		max += 2;
 	if (!nbr && !S_PREC)
 		max--;

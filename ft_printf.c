@@ -33,7 +33,7 @@ int		ft_printf(const char *format, ...)
 				ft_convert(va, &cylva);
 			}
 			else
-				ft_undefined(&cylva, &fmt);
+				ft_undefined(&cylva, &fmt, -7);
 		}
 	}
 	va_end(va);

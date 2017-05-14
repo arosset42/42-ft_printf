@@ -32,7 +32,7 @@ void			ft_convert(va_list ap, t_args *cylva)
 	if (ret < 0 && ft_str_index("dDi", S_OPE) != -1
 			&& ret != -9223372036854775807 - 1)
 	{
-		cylva->f_mo_ze = '-';
+		cylva->f_pl_sp = '-';
 		ret *= -1;
 	}
 	if (ft_str_index("pdDioOuUxX%", S_OPE) != -1)

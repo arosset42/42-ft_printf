@@ -65,7 +65,7 @@ void			ft_get_flags(char **format, t_args *cylva);
 void			ft_get_precision(char **format, t_args *cylva);
 void			ft_get_length(char **fmt, t_args *cylva);
 void			ft_set_base(t_args *cylva);
-void			ft_undefined(t_args *cylva, char **fmt);
+void			ft_undefined(t_args *cylva, char **fmt, int total);
 
 void			ft_error_double_f(char **format, t_args *cylva);
 void			ft_error_tag(t_args *cylva);

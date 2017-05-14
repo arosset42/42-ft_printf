@@ -12,12 +12,10 @@
 
 #include "ft_printf.h"
 
-void	ft_undefined(t_args *cylva, char **fmt)
+void	ft_undefined(t_args *cylva, char **fmt, int total)
 {
 	int		i;
-	int		total;
 
-	total = -7;
 	if ((S_OPE == 'c' || S_OPE == 's') && !S_PREC)
 		S_PREC = -1;
 	i = cylva->width - ((total < 0) ? 1 : total);
