@@ -22,8 +22,8 @@ SRC 		= 	ft_printf.c ft_get.c ft_itoa_base.c ft_memalloc.c ft_bzero.c \
 				ft_atoi.c ft_isdigit.c ft_strdup.c ft_strlen.c ft_strcpy.c \
 				ft_convert.c ft_strdel.c ft_putstr.c ft_putchar.c ft_print.c \
 				ft_len_print.c ft_max_str_print.c ft_put_len_str.c ft_putwchar.c \
-				ft_power.c ft_putwstr.c ft_isupper.c ft_uitoa_base.c \
-				ft_put_n_char.c ft_memdel.c 
+				ft_power.c ft_putwstr.c ft_isupper.c ft_uitoa_base.c ft_error.c\
+				ft_put_n_char.c ft_memdel.c ft_putnbr.c ft_undefined.c ft_str_index.c
 OBJ 		= 	$(SRC:.c=.o)
 
 # COLORS
@@ -64,7 +64,7 @@ re : fclean all
 
 mtest : all
 	@echo $(F_TEST)
-	@$(CC) $(CFLAGS) main_test.c ft_printf.h libftprintf.a libft.a
+	@$(CC) $(CFLAGS) main_test.c ft_printf.h libftprintf.a #libft.a
 	@./a.out | cat -e
 
 cleantest :

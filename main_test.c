@@ -13,6 +13,7 @@
 #include "ft_printf.h"
 #include <stdio.h>
 #include <locale.h>
+# include "Support/libft/includes/libft.h"
 
 // int		main(void)
 // {
@@ -114,11 +115,14 @@ int		main(void)
 	// ret = ft_printf("%s is a string %c %s\n", "this", b, str);
 	// ft_putnbr(ret);
 	// ft_putchar('\n');
-	ret = printf("%d %d %d %d gg!", 1, -2, 33, 42, 0);
+	ret = printf("a%Sb%sc%S", L"ÊM-M-^Q", "42", L"ÁM-^L´");
 	ft_putchar('\n');
 	ft_putnbr(ret);
-	// ret = printf("put wchar : %S\n", wstr);
+	ft_putchar('\n');
+	// ret = ft_printf("%010x", 542);
+	// ft_putchar('\n');
 	// ft_putnbr(ret);
+	// ft_putchar('\n');
 
 
 
@@ -129,12 +133,43 @@ int		main(void)
 	// printf("\nret = %d\n", ret);
 
 
-   // intf("4567 |%-10]5d| plip\n", 12);
-   // intf("4567 |%10]5d| plip\n", 12);
-   // printf("|%10.5d|\n", -12);
-   // printf("|%10d|\n", -12);
-   // printf("|%010d|\n", -12);
-   // printf("|%-10.5d|\n", -12);
-   // printf("|%-010.5d|\n", -12);
+   // ft_printf("4567 |%-10]5d| plip\n", 12);
+   // ft_printf("4567 |%10]5d| plip\n", 12);
+   // ft_printf("|%10.5d|\n", -12);
+   // ft_printf("|%10d|\n", -12);
+   // ft_printf("|%010d|\n", -12);
+   // ft_printf("|%-10.5d|\n", 12);
+   // ft_printf("|%-010.5d|\n", -12);
 	return (0);
+}
+
+
+void ft_print_struct(t_args *cylva)
+{
+	ft_putstr("\n===== STRUCTURE =====");
+	ft_putstr("\nFLAG #-+ 0\n");
+	ft_putstr("\nf_diese = ");
+	ft_putchar(cylva->f_diese);
+	ft_putstr("\nf_pl_sp = ");
+	ft_putchar(cylva->f_pl_sp);
+	ft_putstr("\nf_mo_ze = ");
+	ft_putchar(cylva->f_mo_ze);
+
+
+
+	ft_putstr("\nlen_print = ");
+	ft_putnbr(cylva->len_print);
+	ft_putstr("\nwidth = ");
+	ft_putnbr(cylva->width);
+	ft_putstr("\nprecision = ");
+	ft_putnbr(cylva->precision);
+	ft_putstr("\nbase = ");
+	ft_putnbr(cylva->base);
+
+	ft_putstr("\nm_lenght = ");
+	ft_putchar(cylva->m_lenght);
+	ft_putstr("\noperation = ");
+	ft_putchar(cylva->operation);
+
+	ft_putstr("\n==== END ====\n");
 }

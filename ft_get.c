@@ -6,52 +6,26 @@
 /*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 15:10:31 by arosset           #+#    #+#             */
-/*   Updated: 2017/05/12 15:10:33 by arosset          ###   ########.fr       */
+/*   Updated: 2017/05/14 14:48:47 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void 	ft_get_tag(char **format, t_args *cylva)
+void	ft_get_tag(char **format, t_args *cylva)
 {
-		(*format)++;
-		ft_get_flags(format, cylva);
-        if (ft_isdigit(**format))
-        {
-            cylva->width = ft_atoi(*format);
-            *format += nblen(cylva->width, 10);
-        }
-        ft_get_precision(format, cylva);
-        ft_get_length(format, cylva);
-		ft_error_double_f(format, cylva);
-        cylva->operation = **format;
-		// ft_error_tag(cylva);
-}
-
-// void 	ft_error_tag(t_args *cylva)
-// {
-// 	if (ft_str_index("uU", cylva->operation) != -1 && (cylva->f_space == 1
-// 		|| cylva->f_plus == 1))
-//
-// }
-
-void 	ft_error_double_f(char **format, t_args *cylva)
-{
-	while (ft_str_index(".#0+ ", **format) != -1)
+	(*format)++;
+	ft_get_flags(format, cylva);
+	if (ft_isdigit(**format))
 	{
-		if (cylva->f_diese == 0 && cylva->f_plus == 0 && cylva->f_moins == 0
-			&& cylva->f_space == 0 && cylva->f_zero == 0)
-			ft_get_flags(format, cylva);
-		else if (**format == '+')
-		{
-			cylva->f_plus = 1;
-			(*format)++;
-		}
-		else
-			(*format)++;
+		cylva->width = ft_atoi(*format);
+		*format += nblen(cylva->width, 10);
 	}
-	if (cylva->f_diese == 1 && cylva->f_moins == 1 && cylva->f_plus == 1)
-		cylva->precision = 0;
+	ft_get_precision(format, cylva);
+	ft_get_length(format, cylva);
+	ft_error_double_f(format, cylva);
+	cylva->operation = **format;
+	ft_error_tag(cylva);
 }
 
 void	ft_get_length(char **fmt, t_args *cylva)
@@ -72,9 +46,9 @@ void	ft_get_length(char **fmt, t_args *cylva)
 	}
 }
 
-void    ft_get_precision(char **format, t_args *cylva)
+void	ft_get_precision(char **format, t_args *cylva)
 {
-    if (**format == '.')
+	if (**format == '.')
 	{
 		while (**format == '.')
 			(*format)++;
@@ -88,55 +62,20 @@ void    ft_get_precision(char **format, t_args *cylva)
 		cylva->precision = -1;
 }
 
-void    ft_get_flags(char **format, t_args *cylva)
+void	ft_get_flags(char **format, t_args *cylva)
 {
-    while (**format && ft_str_index("#+- 0", **format) != -1)
-    {
-        if (**format == '#' && cylva->f_diese == 0)
-            cylva->f_diese = 1;
-        if (**format == '0' && cylva->f_moins == 0)
-            cylva->f_zero = 1;
-        if (**format == '-')
-		{
-        	cylva->f_zero = 0;
-		    cylva->f_moins = 1;
-		}
-		if (**format == ' ' && cylva->f_plus == 0)
-            cylva->f_space = 1;
-        if (**format == '+')
-		{
-			cylva->f_space = 0;
-		    cylva->f_plus = 1;
-		}
+	while (**format && ft_str_index("#+- 0", **format) != -1)
+	{
+		if (**format == '#' && cylva->f_diese == 0)
+			cylva->f_diese = '#';
+		if (**format == '0' && cylva->f_mo_ze != '-')
+			cylva->f_mo_ze = **format;
+		if (**format == '-')
+			cylva->f_mo_ze = **format;
+		if (**format == ' ' && cylva->f_pl_sp == 0)
+			cylva->f_pl_sp = **format;
+		if (**format == '+')
+			cylva->f_pl_sp = **format;
 		(*format)++;
-    }
-}
-
-int     ft_str_index(char *str, char c)
-{
-    int     i;
-
-    i = 0;
-    if (str == NULL)
-        return (-1);
-    while (str[i])
-    {
-        if (str[i] == c)
-            return (i);
-        i++;
-    }
-    return (-1);
-}
-
-void ft_print_struct(t_args *cylva)
-{
-    printf("=======================\n");
-    printf("len_print = %d, f_diese = %d, f_plus = %d, f_moins = %d,\
-f_space = %d, f_zero = %d\n", cylva->len_print, cylva->f_diese,\
-cylva->f_plus, cylva->f_moins, cylva->f_space, cylva->f_zero);
-    printf("\n\n width = %d, precision = %d, base = %d\n\n", cylva->width,\
-cylva->precision, cylva->base);
-    printf("m_lenght = %c, Operation = %c\n", cylva->m_lenght, cylva->operation);
-    printf("=======================\n");
-
+	}
 }

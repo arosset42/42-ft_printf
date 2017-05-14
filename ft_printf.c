@@ -6,7 +6,7 @@
 /*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 10:57:02 by arosset           #+#    #+#             */
-/*   Updated: 2016/12/19 10:57:05 by arosset          ###   ########.fr       */
+/*   Updated: 2017/05/14 14:38:24 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		ft_printf(const char *format, ...)
 {
 	va_list		va;
-	t_args 		cylva;
+	t_args		cylva;
 	char		*fmt;
 
 	fmt = ft_strdup(format);
@@ -24,22 +24,23 @@ int		ft_printf(const char *format, ...)
 	while (*fmt)
 	{
 		ft_printf_init(&fmt, &cylva);
-		ft_get_tag(&fmt, &cylva);
-	//	ft_print_struct(&cylva);
-		if (ft_str_index("sSpdDioOuUxXcC%", *fmt) != -1)
+		if (*fmt)
 		{
-			fmt++;
-
-			ft_convert(va, &cylva);
+			ft_get_tag(&fmt, &cylva);
+			if (ft_str_index("sSpdDioOuUxXcC%", *fmt) != -1)
+			{
+				fmt++;
+				ft_convert(va, &cylva);
+			}
+			else
+				ft_undefined(&cylva, &fmt);
 		}
-	 	//sleep(1);
 	}
 	va_end(va);
-	// ft_strdel(&fmt);
 	return (cylva.len_print);
 }
 
-void  	ft_printf_init(char **format, t_args *cylva)
+void	ft_printf_init(char **format, t_args *cylva)
 {
 	cylva->len_print += ft_str_len_print(*format, '%');
 	(*format) += ft_strchr_len(*format, '%');
@@ -57,7 +58,7 @@ int		ft_str_len_print(const char *str, char c)
 
 int		ft_strchr_len(const char *str, char c)
 {
-	int 	i;
+	int		i;
 
 	i = 0;
 	while (str[i] && str[i] != c)
@@ -65,20 +66,18 @@ int		ft_strchr_len(const char *str, char c)
 	return (i);
 }
 
-void 	ft_init_struct(t_args *cylva)
+void	ft_init_struct(t_args *cylva)
 {
 	cylva->f_diese = 0;
-	cylva->f_plus = 0;
-	cylva->f_moins = 0;
-	cylva->f_space = 0;
-	cylva->f_zero = 0;
+	cylva->f_mo_ze = 0;
+	cylva->f_pl_sp = 0;
 	cylva->width = 0;
-	cylva->precision = -1;
+	cylva->precision = 0;
 	cylva->base = 0;
-	cylva->m_lenght = '0';
-	cylva->operation = '0';
-	cylva->wchar = '0';
+	cylva->m_lenght = 0;
+	cylva->operation = 0;
+	cylva->wchar = 0;
 	cylva->wstr = 0;
 	cylva->c = 0;
-	cylva->str = "0";
+	cylva->str = 0;
 }

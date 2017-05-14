@@ -42,7 +42,7 @@ int		ft_str_max_print(t_args *cylva)
 
 int		ft_nbr_max_print(long long int nbr, t_args *cylva)
 {
-	int 	max;
+	int		max;
 	int		len;
 
 	len = (nbr < 0) ? 1 : 0;
@@ -54,19 +54,19 @@ int		ft_nbr_max_print(long long int nbr, t_args *cylva)
 	max = (len > S_PREC) ? len : S_PREC;
 	if (max == S_PREC && cylva->width == 0 && (S_OPE == 'o' || S_OPE == 'O'))
 		max--;
-	if ((cylva->f_diese == 1 && (S_OPE == 'o' || S_OPE == 'O')) ||
-			((cylva->f_plus == 1 || cylva->f_moins == 1) && S_OPE != '%'))
+	if ((S_DIESE == '#' && (S_OPE == 'o' || S_OPE == 'O')) ||
+			(S_MO_ZE && S_OPE != '%'))
 		max++;
-	if ((cylva->f_diese == 1 && (S_OPE == 'X' || S_OPE == 'x')) || S_OPE == 'p')
+	if ((S_DIESE == '#' && (S_OPE == 'X' || S_OPE == 'x')) || S_OPE == 'p')
 		max += 2;
-	if (!nbr && S_PREC == -1)
+	if (!nbr && !S_PREC)
 		max--;
 	return (max);
 }
 
-void 	ft_set_base(t_args *cylva)
+void	ft_set_base(t_args *cylva)
 {
-	if (S_OPE == 'x' || S_OPE  == 'X' || S_OPE == 'p')
+	if (S_OPE == 'x' || S_OPE == 'X' || S_OPE == 'p')
 		cylva->base = 16;
 	else if (S_OPE == 'o' || S_OPE == 'O')
 		cylva->base = 8;

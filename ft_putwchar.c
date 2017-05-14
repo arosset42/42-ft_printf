@@ -6,13 +6,13 @@
 /*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 18:19:42 by arosset           #+#    #+#             */
-/*   Updated: 2017/05/10 18:19:45 by arosset          ###   ########.fr       */
+/*   Updated: 2017/05/14 15:07:03 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void    ft_putwchar(wchar_t wc)
+void	ft_putwchar(wchar_t wc)
 {
 	int		print;
 	int		index;
