@@ -117,7 +117,7 @@ int		main(void)
 	// ret = ft_printf("%s is a string %c %s\n", "this", b, str);
 	// ft_putnbr(ret);
 	// ft_putchar('\n');
-	ret = ft_printf("%lc, %lc", wc, wc);
+	ret = ft_printf("coucou %s, tu double ? %s ou pas \n", str, str2);
 	ft_putchar('\n');
 	ft_putnbr(ret);
 	ft_putchar('\n');

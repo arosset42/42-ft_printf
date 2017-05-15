@@ -27,6 +27,8 @@
 # define S_DIESE cylva->f_diese
 # define S_PL_SP cylva->f_pl_sp
 
+# define S_STR cylva->str
+
 # define BIGGER(x, y) ((x > y) ? x : y)
 
 typedef struct	s_args

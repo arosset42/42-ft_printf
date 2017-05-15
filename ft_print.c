@@ -16,13 +16,12 @@ void	ft_print_str(t_args *cylva)
 {
 	int	total;
 
-	ft_print_struct(cylva);
 	total = ft_str_max_print(cylva);
 	if (S_OPE == 's' && S_PREC && !S_M_LEN && cylva->str == NULL)
 		total = 6;
 	ft_undefined(cylva, NULL, total);
 	if (S_OPE == 's' && !S_M_LEN)
-		total == 0 ? ft_put_len_str(NULL, -1) : ft_put_len_str(cylva->str, total);
+		total == 0 ? ft_put_len_str(NULL, -1) : ft_put_len_str(S_STR, total);
 	else if (S_OPE == 'c' && !S_M_LEN)
 		ft_putchar(cylva->c);
 	else if (S_OPE == 'S' || (S_M_LEN == 'l' && S_OPE == 's'))
