@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_put_n_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arosset <arosset@student.42.fr>            +#+  +:+       +#+        */
+/*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/05 11:27:11 by arosset           #+#    #+#             */
-/*   Updated: 2016/11/16 11:41:37 by arosset          ###   ########.fr       */
+/*   Created: 2017/05/12 16:33:02 by arosset           #+#    #+#             */
+/*   Updated: 2017/05/12 16:33:56 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-char	*ft_strdup(const char *s1)
+void	ft_put_n_char(char c, int n)
 {
-	char *dest;
-
-	dest = (char*)malloc(sizeof(char) * (ft_strlen(s1) + 1));
-	if (dest == NULL)
-		return (0);
-	ft_strcpy(dest, s1);
-	return (dest);
+	while (n-- > 0)
+		write(1, &c, 1);
 }

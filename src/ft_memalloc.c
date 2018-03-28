@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isupper.c                                       :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: arosset <arosset@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/10 19:13:24 by arosset           #+#    #+#             */
-/*   Updated: 2017/05/10 19:13:37 by arosset          ###   ########.fr       */
+/*   Created: 2016/11/10 10:56:07 by arosset           #+#    #+#             */
+/*   Updated: 2016/11/16 11:33:06 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-int	ft_isupper(int c)
+void	*ft_memalloc(size_t size)
 {
-	if (c > 64 && c < 91)
-		return (1);
-	return (0);
+	void *str;
+
+	str = (void *)malloc(sizeof(void) * size);
+	if (str == NULL)
+		return (NULL);
+	ft_bzero(str, size);
+	return (str);
 }

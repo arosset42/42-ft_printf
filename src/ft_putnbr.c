@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arosset <arosset@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/10 12:20:05 by arosset           #+#    #+#             */
-/*   Updated: 2016/11/16 11:41:35 by arosset          ###   ########.fr       */
+/*   Created: 2016/11/05 10:32:46 by arosset           #+#    #+#             */
+/*   Updated: 2016/11/14 14:50:18 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-void	ft_strdel(char **as)
+void	ft_putnbr(int n)
 {
-	if (as != NULL)
+	if (n <= -2147483648)
 	{
-		free(*as);
-		*as = NULL;
+		ft_putchar('-');
+		ft_putchar('2');
+		ft_putnbr(147483648);
+		return ;
 	}
+	if (n < 0)
+	{
+		ft_putchar('-');
+		n = n * -1;
+	}
+	if (n >= 10)
+	{
+		ft_putnbr(n / 10);
+	}
+	ft_putchar((n % 10) + '0');
 }

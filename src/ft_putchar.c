@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_power.c                                         :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: arosset <arosset@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/10 18:28:32 by arosset           #+#    #+#             */
-/*   Updated: 2017/05/10 18:28:46 by arosset          ###   ########.fr       */
+/*   Created: 2016/11/05 10:23:02 by arosset           #+#    #+#             */
+/*   Updated: 2016/11/16 11:41:19 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-int	ft_power(int n, int pow)
+void	ft_putchar(char c)
 {
-	if (pow <= 0)
-		return (1);
-	else if (pow == 1)
-		return (n);
-	else
-		return (n * ft_power(n, pow - 1));
+	write(1, &c, 1);
 }

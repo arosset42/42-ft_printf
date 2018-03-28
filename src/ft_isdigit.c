@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_n_char.c                                    :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: arosset <arosset@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/12 16:33:02 by arosset           #+#    #+#             */
-/*   Updated: 2017/05/12 16:33:56 by arosset          ###   ########.fr       */
+/*   Created: 2016/11/07 18:51:19 by arosset           #+#    #+#             */
+/*   Updated: 2016/11/16 11:40:52 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-void	ft_put_n_char(char c, int n)
+int		ft_isdigit(int c)
 {
-	while (n-- > 0)
-		write(1, &c, 1);
+	if (c > 47 && c < 58)
+		return (1);
+	else
+		return (0);
 }

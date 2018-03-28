@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arosset <arosset@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/05 11:32:18 by arosset           #+#    #+#             */
-/*   Updated: 2016/11/16 11:41:34 by arosset          ###   ########.fr       */
+/*   Created: 2016/11/10 11:14:36 by arosset           #+#    #+#             */
+/*   Updated: 2016/11/12 12:52:41 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-char	*ft_strcpy(char *dst, const char *src)
+void	ft_memdel(void **ap)
 {
-	int i;
-
-	i = 0;
-	while (src[i] != '\0')
+	if (ap != NULL)
 	{
-		dst[i] = src[i];
-		i++;
+		free(*ap);
+		*ap = NULL;
 	}
-	dst[i] = '\0';
-	return (dst);
 }

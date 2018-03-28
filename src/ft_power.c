@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_power.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arosset <arosset@student.42.fr>            +#+  +:+       +#+        */
+/*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/07 19:26:35 by arosset           #+#    #+#             */
-/*   Updated: 2016/11/16 11:40:47 by arosset          ###   ########.fr       */
+/*   Created: 2017/05/10 18:28:32 by arosset           #+#    #+#             */
+/*   Updated: 2017/05/10 18:28:46 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-void	ft_bzero(void *s, size_t n)
+int	ft_power(int n, int pow)
 {
-	size_t			i;
-	unsigned char	*str;
-
-	str = (unsigned char *)s;
-	i = 0;
-	while (i < n)
-	{
-		str[i] = '\0';
-		i++;
-	}
+	if (pow <= 0)
+		return (1);
+	else if (pow == 1)
+		return (n);
+	else
+		return (n * ft_power(n, pow - 1));
 }

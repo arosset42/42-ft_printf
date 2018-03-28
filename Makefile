@@ -16,15 +16,21 @@ CC 		=	gcc
 
 CFLAGS 		= 	-Wall -Werror -Wextra
 
-INCLUDES 	= 	ft_printf.h
+INC_PATH	=	./includes
+INC_NAME	=	ft_printf.h
 
-SRC 		= 	ft_printf.c ft_get.c ft_itoa_base.c ft_memalloc.c ft_bzero.c \
+SRC_PATH	=	./src
+SRC_NAME 	= 	ft_printf.c ft_get.c ft_itoa_base.c ft_memalloc.c ft_bzero.c \
 				ft_atoi.c ft_isdigit.c ft_strdup.c ft_strlen.c ft_strcpy.c \
 				ft_convert.c ft_strdel.c ft_putstr.c ft_putchar.c ft_print.c \
 				ft_len_print.c ft_max_str_print.c ft_put_len_str.c ft_putwchar.c \
 				ft_power.c ft_putwstr.c ft_isupper.c ft_uitoa_base.c ft_error.c\
 				ft_put_n_char.c ft_memdel.c ft_putnbr.c ft_undefined.c ft_str_index.c
-OBJ 		= 	$(SRC:.c=.o)
+
+OBJ_PATH	=	./obj
+OBJ_NAME 	= 	$(SRC_NAME:.c=.o)
+
+OBJ		=	$(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
 # COLORS
 C_NO		=	"\033[00m"
@@ -48,13 +54,14 @@ $(NAME) : $(OBJ)
 	@ranlib $(NAME)
 	@echo Lib : [ $(NAME) ] $(SUCCESS)
 
-%.o: %.c $(INCLUDES)
-	@$(CC) $(CFLAGS) -c -o $@ $< -I $(INCLUDES)
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
+	@mkdir $(OBJ_PATH) 2> /dev/null || true
+	$(CC) $(CFLAGS) -o $@ -c $<
 	@echo $(C_OBJ) [ $< ] $(OK)
+
 clean :
-	@rm -f $(OBJ)
-	@rm -f *.gch
-	@echo $(C_DEL) $(OBJ)
+	@rm -rf $(OBJ) $(OBJ_PATH)
+	@echo $(C_DEL) $(OBJ_PATH)
 
 fclean : clean
 	@rm -f $(NAME)

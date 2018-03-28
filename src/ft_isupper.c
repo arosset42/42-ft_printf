@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_isupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arosset <arosset@student.42.fr>            +#+  +:+       +#+        */
+/*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/07 18:51:19 by arosset           #+#    #+#             */
-/*   Updated: 2016/11/16 11:40:52 by arosset          ###   ########.fr       */
+/*   Created: 2017/05/10 19:13:24 by arosset           #+#    #+#             */
+/*   Updated: 2017/05/10 19:13:37 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-int		ft_isdigit(int c)
+int	ft_isupper(int c)
 {
-	if (c > 47 && c < 58)
+	if (c > 64 && c < 91)
 		return (1);
-	else
-		return (0);
+	return (0);
 }

@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arosset <arosset@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/05 10:17:44 by arosset           #+#    #+#             */
-/*   Updated: 2016/11/14 12:37:04 by arosset          ###   ########.fr       */
+/*   Created: 2016/11/10 12:20:05 by arosset           #+#    #+#             */
+/*   Updated: 2016/11/16 11:41:35 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_strdel(char **as)
 {
-	size_t	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	if (as != NULL)
+	{
+		free(*as);
+		*as = NULL;
+	}
 }

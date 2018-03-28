@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_index.c                                     :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: arosset <arosset@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/14 14:42:21 by arosset           #+#    #+#             */
-/*   Updated: 2017/05/14 15:08:14 by arosset          ###   ########.fr       */
+/*   Created: 2016/11/05 11:32:18 by arosset           #+#    #+#             */
+/*   Updated: 2016/11/16 11:41:34 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-int		ft_str_index(char *str, char c)
+char	*ft_strcpy(char *dst, const char *src)
 {
-	int		i;
+	int i;
 
 	i = 0;
-	if (str == NULL)
-		return (-1);
-	while (str[i])
+	while (src[i] != '\0')
 	{
-		if (str[i] == c)
-			return (i);
+		dst[i] = src[i];
 		i++;
 	}
-	return (-1);
+	dst[i] = '\0';
+	return (dst);
 }

@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arosset <arosset@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/05 10:32:46 by arosset           #+#    #+#             */
-/*   Updated: 2016/11/14 14:50:18 by arosset          ###   ########.fr       */
+/*   Created: 2016/11/05 10:23:51 by arosset           #+#    #+#             */
+/*   Updated: 2016/11/11 13:01:31 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-void	ft_putnbr(int n)
+void	ft_putstr(const char *s)
 {
-	if (n <= -2147483648)
+	int i;
+
+	i = 0;
+	if (s != NULL)
 	{
-		ft_putchar('-');
-		ft_putchar('2');
-		ft_putnbr(147483648);
-		return ;
+		while (s[i] != '\0')
+		{
+			ft_putchar(s[i]);
+			i++;
+		}
 	}
-	if (n < 0)
-	{
-		ft_putchar('-');
-		n = n * -1;
-	}
-	if (n >= 10)
-	{
-		ft_putnbr(n / 10);
-	}
-	ft_putchar((n % 10) + '0');
 }

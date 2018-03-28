@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putwstr.c                                       :+:      :+:    :+:   */
+/*   ft_put_len_str.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/10 18:19:49 by arosset           #+#    #+#             */
-/*   Updated: 2017/05/10 18:19:54 by arosset          ###   ########.fr       */
+/*   Created: 2017/05/09 15:57:20 by arosset           #+#    #+#             */
+/*   Updated: 2017/05/09 15:57:36 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-void	ft_putwstr(wchar_t *ws, int len)
+void	ft_put_len_str(char const *s, int len)
 {
-	int	i;
-
-	i = 0;
-	while (ws[i] && len >= 0)
+	if (len != -1)
 	{
-		if (ws[i] <= 0x7F)
-			len -= 1;
-		else if (ws[i] <= 0x7FF)
-			len -= 2;
-		else if (ws[i] <= 0xFFFF)
-			len -= 3;
-		else
-			len -= 4;
-		if (len >= 0)
-			ft_putwchar(ws[i]);
-		i++;
+		if (!s)
+			ft_put_len_str("(null)", 6);
+		write(1, s, len);
 	}
 }

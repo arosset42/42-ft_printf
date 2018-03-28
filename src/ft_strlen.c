@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arosset <arosset@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/05 10:23:02 by arosset           #+#    #+#             */
-/*   Updated: 2016/11/16 11:41:19 by arosset          ###   ########.fr       */
+/*   Created: 2016/11/05 10:17:44 by arosset           #+#    #+#             */
+/*   Updated: 2016/11/14 12:37:04 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-void	ft_putchar(char c)
+size_t	ft_strlen(const char *s)
 {
-	write(1, &c, 1);
+	size_t	i;
+
+	i = 0;
+	if (!s)
+		return (0);
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }

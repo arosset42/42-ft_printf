@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arosset <arosset@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/09 11:21:43 by arosset           #+#    #+#             */
-/*   Updated: 2016/11/14 13:01:46 by arosset          ###   ########.fr       */
+/*   Created: 2016/11/07 19:26:35 by arosset           #+#    #+#             */
+/*   Updated: 2016/11/16 11:40:47 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-int		ft_atoi(const char *str)
+void	ft_bzero(void *s, size_t n)
 {
-	int neg;
-	int res;
-	int i;
+	size_t			i;
+	unsigned char	*str;
 
-	res = 0;
+	str = (unsigned char *)s;
 	i = 0;
-	neg = 1;
-	while (str[i] == ' ' || str[i] == '\v' || str[i] == '\t' || str[i] == '\f'
-			|| str[i] == '\r' || str[i] == '\n')
-		i++;
-	if (str[i] == '-')
+	while (i < n)
 	{
-		neg = -1;
+		str[i] = '\0';
 		i++;
 	}
-	if (str[i] == '+' && str[i - 1] != '-')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		res = res * 10 + str[i] - '0';
-		i++;
-	}
-	return (res * neg);
 }
