@@ -12,9 +12,9 @@
 
 NAME 		= 	libftprintf.a
 
-CC 			=	gcc
+CC 		=	gcc
 
-CFLAGS 		= 	#-Wall -Werror -Wextra
+CFLAGS 		= 	-Wall -Werror -Wextra
 
 INCLUDES 	= 	ft_printf.h
 
@@ -35,7 +35,7 @@ C_TEST		= 	"\033[33m"
 
 # MESSAGE
 SUCCESS		=	$(C_GOOD)SUCCESS$(C_NO)
-OK 			=	$(C_OK)OK$(C_NO)
+OK 		=	$(C_OK)OK$(C_NO)
 F_TEST 		= 	$(C_TEST)DEBUT TEST$(C_NO)
 ERROR		= 	$(C_ERROR) ERROR $(C_NO)
 C_DEL		= 	$(C_ERROR) DELETE $(C_NO)
@@ -62,18 +62,5 @@ fclean : clean
 
 re : fclean all
 
-mtest : all
-	@echo $(F_TEST)
-	@$(CC) $(CFLAGS) main_test.c ft_printf.h libftprintf.a #libft.a
-	@./a.out | cat -e
-
-cleantest :
-	@rm -f $(OBJ)
-	@rm -f *.gch
-	@rm -rf a.out
-	@echo $(C_DEL) a.out
-	@echo $(C_DEL) $(OBJ)
 norme :
 	@norminette $(SRC) $(INCLUDES)
-
-.PHONY: clean, fclean, re
